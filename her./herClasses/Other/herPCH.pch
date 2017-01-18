@@ -1,0 +1,28 @@
+//
+//  herPCH.pch
+//  her.
+//
+//  Created by ma c on 17/1/18.
+//  Copyright © 2017年 LXq. All rights reserved.
+//
+
+#ifndef herPCH_pch
+#define herPCH_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+// NSLog 增强
+#define MYDEBUG 1
+
+#ifdef MYDEBUG
+#define DLog(s,...) NSLog(@"[在%@中第%d行%s] %@", [[NSString 			stringWithFormat:@"%s", __FILE__] lastPathComponent] ,__LINE__, __FUNCTION__, [NSString stringWithFormat:(s),##__VA_ARGS__])
+#else
+#define MyLog(s,...)
+#endif
+
+// 屏幕宽高
+#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
+
+
+#endif /* herPCH_pch */
