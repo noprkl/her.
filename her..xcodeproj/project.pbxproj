@@ -21,6 +21,7 @@
 		047647991E2F69FC00642581 /* TwoChatroomVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 047647981E2F69FC00642581 /* TwoChatroomVc.m */; };
 		0476479C1E2F6A0C00642581 /* ThreeChatroomVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476479B1E2F6A0C00642581 /* ThreeChatroomVc.m */; };
 		0476479F1E2F6A4E00642581 /* HerNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476479E1E2F6A4E00642581 /* HerNameView.m */; };
+		0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3BB22934BE7E4E8BE3234B /* libPods-her..a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,9 @@
 		0476479B1E2F6A0C00642581 /* ThreeChatroomVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeChatroomVc.m; sourceTree = "<group>"; };
 		0476479D1E2F6A4E00642581 /* HerNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerNameView.h; sourceTree = "<group>"; };
 		0476479E1E2F6A4E00642581 /* HerNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerNameView.m; sourceTree = "<group>"; };
+		308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..debug.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..debug.xcconfig"; sourceTree = "<group>"; };
+		4F3BB22934BE7E4E8BE3234B /* libPods-her..a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-her..a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..release.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,8 @@
 			children = (
 				047647521E2F59FC00642581 /* her. */,
 				047647511E2F59FC00642581 /* Products */,
+				BFAFC111DAAF220A527C1005 /* Pods */,
+				CAEA72734FAB7D9FE00A01BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +276,23 @@
 			path = BaseViews;
 			sourceTree = "<group>";
 		};
+		BFAFC111DAAF220A527C1005 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */,
+				D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CAEA72734FAB7D9FE00A01BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F3BB22934BE7E4E8BE3234B /* libPods-her..a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,9 +300,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 047647671E2F59FD00642581 /* Build configuration list for PBXNativeTarget "her." */;
 			buildPhases = (
+				294C1EFB74C3BAC1AF22D6E3 /* [CP] Check Pods Manifest.lock */,
 				0476474C1E2F59FC00642581 /* Sources */,
 				0476474D1E2F59FC00642581 /* Frameworks */,
 				0476474E1E2F59FC00642581 /* Resources */,
+				E7225285A79C03976D1C8F72 /* [CP] Embed Pods Frameworks */,
+				4B9B77180E4F0BBE1B3B5BB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -334,6 +361,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		294C1EFB74C3BAC1AF22D6E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4B9B77180E4F0BBE1B3B5BB9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-her./Pods-her.-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7225285A79C03976D1C8F72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-her./Pods-her.-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0476474C1E2F59FC00642581 /* Sources */ = {
@@ -457,6 +532,7 @@
 		};
 		047647681E2F59FD00642581 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/her./herClasses/Other/herPCH.pch";
@@ -470,6 +546,7 @@
 		};
 		047647691E2F59FD00642581 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/her./herClasses/Other/herPCH.pch";
@@ -500,6 +577,7 @@
 				047647691E2F59FD00642581 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
