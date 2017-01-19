@@ -8,6 +8,9 @@
 
 #import "BaseView.h"
 
+typedef void(^ClickSureBtnBlock)(NSString *name);
 @interface HerNameView : BaseView
+
+@property (nonatomic, strong) ClickSureBtnBlock sureBlock; /**< 确定回调 */
 
 @end

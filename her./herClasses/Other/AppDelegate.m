@@ -19,7 +19,9 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     MainViewController *mainVc = [[MainViewController alloc] init];
-    self.window.rootViewController = mainVc;
+    UINavigationController *tabbc = [[UINavigationController alloc] initWithRootViewController:mainVc];
+
+    self.window.rootViewController = tabbc;
 
     [self.window makeKeyAndVisible];
     return YES;

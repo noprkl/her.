@@ -16,9 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // 基本颜色
+    self.view.backgroundColor = BackGround_Color;
 }
-
+- (void)showHint:(NSString *)message dissAfter:(CGFloat)delay {
+    ShowHintView *hintView = [[ShowHintView alloc] init];
+    hintView.alertStr = message;
+    [hintView show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [hintView dismiss];
+    });
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

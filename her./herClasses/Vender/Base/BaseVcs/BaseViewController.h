@@ -10,4 +10,7 @@
 
 @interface BaseViewController : UIViewController
 
+/** 提示框 */
+- (void)showHint:(NSString *)message dissAfter:(CGFloat)delay;
+
 @end
