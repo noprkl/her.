@@ -26,6 +26,7 @@
 		047648051E30559F00642581 /* HerTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648041E30559E00642581 /* HerTipsView.m */; };
 		047648081E3058F300642581 /* UIImage+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648071E3058F300642581 /* UIImage+Images.m */; };
 		0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3BB22934BE7E4E8BE3234B /* libPods-her..a */; };
+		41ED79DF1E30E05100488730 /* FriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ED79DE1E30E05100488730 /* FriendsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,8 @@
 		047648061E3058F300642581 /* UIImage+Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Images.h"; sourceTree = "<group>"; };
 		047648071E3058F300642581 /* UIImage+Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Images.m"; sourceTree = "<group>"; };
 		308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..debug.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..debug.xcconfig"; sourceTree = "<group>"; };
+		41ED79DD1E30E05100488730 /* FriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsView.h; sourceTree = "<group>"; };
+		41ED79DE1E30E05100488730 /* FriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsView.m; sourceTree = "<group>"; };
 		4F3BB22934BE7E4E8BE3234B /* libPods-her..a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-her..a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..release.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +199,8 @@
 				047647FD1E2F7C6D00642581 /* ShowHintView.m */,
 				047648031E30559E00642581 /* HerTipsView.h */,
 				047648041E30559E00642581 /* HerTipsView.m */,
+				41ED79DD1E30E05100488730 /* FriendsView.h */,
+				41ED79DE1E30E05100488730 /* FriendsView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				0476479F1E2F6A4E00642581 /* HerNameView.m in Sources */,
 				0476479C1E2F6A0C00642581 /* ThreeChatroomVc.m in Sources */,
 				0476478A1E2F675C00642581 /* BaseViewController.m in Sources */,
+				41ED79DF1E30E05100488730 /* FriendsView.m in Sources */,
 				047647991E2F69FC00642581 /* TwoChatroomVc.m in Sources */,
 				047647811E2F618A00642581 /* main.m in Sources */,
 				0476478D1E2F676A00642581 /* BaseModel.m in Sources */,

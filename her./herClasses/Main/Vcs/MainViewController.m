@@ -78,7 +78,7 @@
         __weak typeof(self) weakSelf = self;
         _nameView.sureBlock = ^(NSString *name){
             if (name.length != 0) {
-            
+                DLog(@"%@", name);
             }else{
                 [weakSelf showHint:@"名字不能为空哦!" dissAfter:1.5];
             }
