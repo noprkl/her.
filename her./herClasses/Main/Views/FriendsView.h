@@ -8,6 +8,11 @@
 
 #import "BaseView.h"
 
-@interface FriendsView : BaseView
+typedef void(^ClickStatusButtonBlock)(NSString *title);
+@interface FriendsView : UITableView
+
+@property (nonatomic, strong) NSArray *friendArray; /**< 关注的人数据 */
+
+@property (nonatomic, strong) ClickStatusButtonBlock statusBlock; /**< 状态按钮回调 */
 
 @end

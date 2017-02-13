@@ -93,7 +93,7 @@
 #pragma mark - 懒加载
 - (UIImageView *)backImgView {
     if (!_backImgView) {
-        _backImgView = [[UIImageView alloc] initWithImage:[UIImage originalImageNamed:@"dialog-box-left"]];
+        _backImgView = [[UIImageView alloc] initWithImage:[UIImage originalImageNamed:@"dialog-box-right"]];
     }
     return _backImgView;
 }

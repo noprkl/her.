@@ -6,11 +6,22 @@
 //  Copyright © 2017年 LXq. All rights reserved.
 //
 
+#define SystemMessageCellHeight 55/2
+
 #import "MainViewController.h"
 #import "HerTipsView.h"
 #import "HerNameView.h"
+#import "FriendsView.h"
+#import "LookHerAgainView.h"
+#import "SystemMessageTableView.h"
+#import "SystemMessageTableViewCell.h"
+#import "FindingView.h" // 寻找是的变换文字
 
-@interface MainViewController ()
+// 跳转
+#import "TwoChatroomVc.h"
+#import "ThreeChatroomVc.h"
+
+@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIButton *herBtn; /**< 按钮 */
 
@@ -18,10 +29,25 @@
 
 @property (nonatomic, strong) HerNameView *nameView; /**< 名字 */
 
+@property (nonatomic, strong) LookHerAgainView *findAgainView; /**< 再次寻找 */
+
 @property (nonatomic, strong) UIButton *heartBtn; /**< 心形按钮 */
+@property (nonatomic, strong) HerTipsView *tipsView; /**< tips弹窗 */
+
+@property (nonatomic, strong) FriendsView *friendView; /**< 好友view */
+
+@property (nonatomic, strong) SystemMessageTableView *systemMessagetableView; /**< 系统提示tableview */
+
+@property (nonatomic, strong) NSArray *systemMessageArray; /**< 系统消息数据 */
+@property (nonatomic, assign) BOOL isAutoScroll; /**< 是否自动滚动 */
+
+
+@property (nonatomic, strong) FindingView *findingView; /**< 寻找中提示文字 */
+@property (nonatomic, strong) NSTimer *findingTimer; /**< 寻找中定时器 */
+@property (nonatomic, assign) BOOL ischange; /**< 是否改变文字 */
 
 @end
-
+static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 @implementation MainViewController
 
 - (void)viewDidLoad {
@@ -33,17 +59,52 @@
     self.navigationController.navigationBarHidden = YES;
     [self.navigationController.navigationBar setAlpha:0];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+    
+    // 进来时 判断哪一个view是显示的
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.nameView.hidden = YES;
+    self.findAgainView.hidden = NO;
+    self.heartBtn.hidden = NO;
+    self.systemMessagetableView.hidden = NO;
+    self.findingView.hidden = YES;
 }
 - (void)initUI {
     [self.view addSubview:self.herBtn];
     [self.view addSubview:self.nameView];
     [self.view addSubview:self.heartBtn];
+    [self.view addSubview:self.friendView];
+    [self.view addSubview:self.findAgainView];
+    [self.view addSubview:self.systemMessagetableView];
+    [self.view addSubview:self.findingView];
     
+    [self.systemMessagetableView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.view.top).offset(20);
+        make.size.equalTo(CGSizeMake(250 + SystemMessageCellHeight, SystemMessageCellHeight * 3));
+    }];
+    CGSize viewSize = CGSizeMake(235, 100);
+    CGFloat topHeight = 120;
+    // 名字
     [self.nameView makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.centerX);
-        make.top.equalTo(self.view.top).offset(110);
-        make.size.equalTo(CGSizeMake(235, 100));
+        make.top.equalTo(self.view.top).offset(topHeight);
+        make.size.equalTo(viewSize);
     }];
+    // 再次寻找
+    [self.findAgainView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.view.top).offset(topHeight);
+        make.size.equalTo(viewSize);
+    }];
+    // 寻找中
+    [self.findingView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.view.top).offset(topHeight);
+        make.size.equalTo(viewSize);
+    }];
+    
     [self.herBtn makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.left).offset(10);
         make.bottom.equalTo(self.view.bottom).offset(-10);
@@ -51,6 +112,13 @@
     [self.heartBtn makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view.right).offset(-10);
         make.bottom.equalTo(self.view.bottom).offset(-10);
+    }];
+    
+    [self.friendView makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(120);
+        make.height.equalTo(110);
+        make.bottom.equalTo(self.heartBtn.top).offset(-15);
+        make.right.equalTo(self.view.right).offset(-15);
     }];
 }
 #pragma mark
@@ -86,13 +154,39 @@
     }
     return _nameView;
 }
+- (LookHerAgainView *)findAgainView {
+    if (!_findAgainView) {
+        _findAgainView = [[LookHerAgainView alloc] init];
+        _findAgainView.hidden = YES;
+        XWeakSelf;
+        _findAgainView.beginBlock = ^(){
+            [weakSelf beginFindingAnimation];
+        };
+    }
+    return _findAgainView;
+}
 - (UIButton *)heartBtn {
     if (!_heartBtn) {
-        _heartBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _heartBtn = [UIButton buttonWithType:(UIButtonTypeSystem)];
         [_heartBtn setImage:[UIImage originalImageNamed:@"like-red"] forState:(UIControlStateNormal)];
-        [_heartBtn addTarget:self action:@selector(clickHeartBtnAction) forControlEvents:(UIControlEventTouchDown)];
+        [_heartBtn addTarget:self action:@selector(clickHeartBtnAction:) forControlEvents:(UIControlEventTouchDown)];
     }
     return _heartBtn;
+}
+- (FriendsView *)friendView {
+    if (!_friendView) {
+        
+        _friendView = [[FriendsView alloc] initWithFrame:CGRectZero style:(UITableViewStylePlain)];
+        _friendView.hidden = YES;
+        _friendView.alpha = 0.01;
+        _friendView.statusBlock = ^(NSString *title){
+            DLog(@"%@", title);
+            if ([title isEqualToString:@"赴约"]) {
+                
+            }
+        };
+    }
+    return _friendView;
 }
 #pragma mark
 #pragma mark - Action
@@ -100,15 +194,146 @@
     self.herBtn.enabled = NO;
     HerTipsView *tipsView = [[HerTipsView alloc] init];
     [tipsView show];
+    self.tipsView = tipsView;
     tipsView.disBlock = ^(){
         self.herBtn.enabled = YES;
     };
 }
-- (void)clickHeartBtnAction {
-    
+- (void)clickHeartBtnAction:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (self.friendView.hidden) {
+            self.friendView.alpha = 1;
+        }else{
+            self.friendView.alpha = 0.01;
+        }
+    } completion:^(BOOL finished) {
+        self.friendView.hidden = !self.friendView.hidden;
+    }];
 }
+
+#pragma mark
+#pragma mark - 提示消息
+- (NSArray *)systemMessageArray {
+    if (!_systemMessageArray) {
+        _systemMessageArray = [NSArray array];
+    }
+    return _systemMessageArray;
+}
+
+- (SystemMessageTableView *)systemMessagetableView {
+    if (!_systemMessagetableView) {
+        _systemMessagetableView = [[SystemMessageTableView alloc] initWithFrame:CGRectZero style:(UITableViewStylePlain)];
+        _systemMessagetableView.delegate = self;
+        _systemMessagetableView.dataSource = self;
+        _systemMessagetableView.showsVerticalScrollIndicator = NO;
+        _systemMessagetableView.backgroundColor = BackGround_Color;
+        _systemMessagetableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        
+        [_systemMessagetableView registerClass:[SystemMessageTableViewCell class] forCellReuseIdentifier:systemMessageTableViewCellid];
+    }
+    return _systemMessagetableView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger count = 6;
+//    NSInteger count = self.systemMessageArray.count;
+    
+    return count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SystemMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:systemMessageTableViewCellid];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundView = [[UIView alloc] init];
+    cell.backgroundView.backgroundColor = BackGround_Color;
+    cell.state = indexPath.row;
+
+    XWeakSelf;
+    cell.appointBlock = ^(){
+        DLog(@"赴约");
+    };
+    cell.deleteBlock = ^(){
+        DLog(@"删除");
+        DLog(@"刷新");
+        
+    };
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return SystemMessageCellHeight;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DLog(@"%ld", indexPath.row);
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self showHint:@"名字不能随便输入哦" dissAfter:2];
+    self.nameView.hidden = !self.nameView.hidden;
+    self.findAgainView.hidden = !self.nameView.hidden;
+    static NSInteger count = 3;
+    if (count == 3) {
+        count += 3;
+    }else{
+        count -= 3;
+    }
+    if (count > 3) {
+        self.systemMessagetableView.isAutoScroll = YES;
+    }else{
+        self.systemMessagetableView.isAutoScroll = NO;
+    }
+
+}
+
+#pragma mark
+#pragma mark - 开始匹配 动画
+- (FindingView *)findingView {
+    if (!_findingView) {
+        _findingView = [[FindingView alloc] init];
+        _findingView.hidden = YES;
+    }
+    return _findingView;
+}
+- (void)beginFindingAnimation {
+    self.nameView.hidden = YES;
+    self.findAgainView.hidden = YES;
+    self.heartBtn.hidden = YES;
+    self.systemMessagetableView.hidden = YES;
+    
+    self.findingView.hidden = NO;
+    self.ischange = NO;
+    
+    self.findingTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changeFindingMessage) userInfo:nil repeats:YES];
+}
+- (void)changeFindingMessage {
+    self.ischange = !self.ischange;
+
+    if (_ischange) { //改变
+        self.findingView.chineseMessage = @"请正确对待男女关系!";
+        self.findingView.englishMessage = @"Treat the new relationship right";
+    }else{
+        self.findingView.chineseMessage = @"正在为你寻找附近的她";
+        self.findingView.englishMessage = @"Seeking her for you ...";
+    }
+    
+    static NSInteger count = 0;
+    count ++;
+    DLog(@"%ld", count);
+    if (count == 5) {
+        [self.findingTimer invalidate];
+        self.findingTimer = nil;
+        [self haveFindHer];
+    }
+}
+- (void)haveFindHer { // 寻找到她了
+    self.findingView.chineseMessage = @"找到她了，嗨起来!";
+    self.findingView.englishMessage = @"Bingo，high up！";
+    [self performSelector:@selector(pushToChatVc) withObject:nil afterDelay:1];
+}
+- (void)pushToChatVc {
+    // 如果有弹窗，弹窗消失
+    [self.tipsView dismiss];
+
+    TwoChatroomVc *twoChat = [[TwoChatroomVc alloc] init];
+    twoChat.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:twoChat animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

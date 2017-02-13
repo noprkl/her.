@@ -1,0 +1,15 @@
+//
+//  ChatFocusListView.h
+//  her.
+//
+//  Created by 李祥起 on 2017/2/8.
+//  Copyright © 2017年 LXq. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ChatFocusListView : UITableView
+
+@property (nonatomic, strong) NSArray *focusArray; /**< 关注的人数据 */
+
+@end

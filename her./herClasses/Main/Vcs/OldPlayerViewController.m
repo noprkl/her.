@@ -1,27 +1,24 @@
 //
-//  ThreeChatroomVc.m
+//  OldPlayerViewController.m
 //  her.
 //
-//  Created by ma c on 17/1/18.
+//  Created by 李祥起 on 2017/2/4.
 //  Copyright © 2017年 LXq. All rights reserved.
 //
 
-#import "ThreeChatroomVc.h"
+#import "OldPlayerViewController.h"
 
-@interface ThreeChatroomVc ()
+@interface OldPlayerViewController ()
 
 @end
 
-@implementation ThreeChatroomVc
+@implementation OldPlayerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

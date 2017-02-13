@@ -26,6 +26,19 @@
 		047648051E30559F00642581 /* HerTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648041E30559E00642581 /* HerTipsView.m */; };
 		047648081E3058F300642581 /* UIImage+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648071E3058F300642581 /* UIImage+Images.m */; };
 		0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3BB22934BE7E4E8BE3234B /* libPods-her..a */; };
+		411497861E45BC7B000F4DA4 /* OldPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */; };
+		4114978C1E45BCCD000F4DA4 /* HerUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */; };
+		4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978E1E45C002000F4DA4 /* FriendsCell.m */; };
+		41156CA81E4AB4E400B5C498 /* ChatFocusListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41156CA71E4AB4E400B5C498 /* ChatFocusListView.m */; };
+		411586841E48937B004AAC81 /* FindAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411586831E48937B004AAC81 /* FindAnimationView.m */; };
+		411586871E489585004AAC81 /* FindingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411586861E489585004AAC81 /* FindingView.m */; };
+		4115868D1E4960C9004AAC81 /* TwoChatToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115868C1E4960C9004AAC81 /* TwoChatToolView.m */; };
+		412135D91E48704D0084D966 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412135D81E48704D0084D966 /* ReportViewController.m */; };
+		41854A6F1E48119A00B91BD0 /* LookHerAgainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */; };
+		41854A721E4822AA00B91BD0 /* FightFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A711E4822AA00B91BD0 /* FightFailedViewController.m */; };
+		41854A751E4823E200B91BD0 /* SystemMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A741E4823E200B91BD0 /* SystemMessageTableView.m */; };
+		41854A781E48240B00B91BD0 /* SystemMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A771E48240B00B91BD0 /* SystemMessageTableViewCell.m */; };
+		418DCB3A1E4852F400035FC6 /* SMTableViewInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 418DCB391E4852F400035FC6 /* SMTableViewInterceptor.m */; };
 		41ED79DF1E30E05100488730 /* FriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ED79DE1E30E05100488730 /* FriendsView.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +77,32 @@
 		047648061E3058F300642581 /* UIImage+Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Images.h"; sourceTree = "<group>"; };
 		047648071E3058F300642581 /* UIImage+Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Images.m"; sourceTree = "<group>"; };
 		308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..debug.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..debug.xcconfig"; sourceTree = "<group>"; };
+		411497841E45BC7B000F4DA4 /* OldPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldPlayerViewController.h; sourceTree = "<group>"; };
+		411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldPlayerViewController.m; sourceTree = "<group>"; };
+		4114978A1E45BCCD000F4DA4 /* HerUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerUserInfo.h; sourceTree = "<group>"; };
+		4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerUserInfo.m; sourceTree = "<group>"; };
+		4114978D1E45C002000F4DA4 /* FriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
+		4114978E1E45C002000F4DA4 /* FriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
+		41156CA61E4AB4E400B5C498 /* ChatFocusListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFocusListView.h; sourceTree = "<group>"; };
+		41156CA71E4AB4E400B5C498 /* ChatFocusListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFocusListView.m; sourceTree = "<group>"; };
+		411586821E48937B004AAC81 /* FindAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindAnimationView.h; sourceTree = "<group>"; };
+		411586831E48937B004AAC81 /* FindAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindAnimationView.m; sourceTree = "<group>"; };
+		411586851E489585004AAC81 /* FindingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindingView.h; sourceTree = "<group>"; };
+		411586861E489585004AAC81 /* FindingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindingView.m; sourceTree = "<group>"; };
+		4115868B1E4960C9004AAC81 /* TwoChatToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoChatToolView.h; sourceTree = "<group>"; };
+		4115868C1E4960C9004AAC81 /* TwoChatToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoChatToolView.m; sourceTree = "<group>"; };
+		412135D71E48704D0084D966 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		412135D81E48704D0084D966 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		41854A6D1E48119A00B91BD0 /* LookHerAgainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookHerAgainView.h; sourceTree = "<group>"; };
+		41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookHerAgainView.m; sourceTree = "<group>"; };
+		41854A701E4822AA00B91BD0 /* FightFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightFailedViewController.h; sourceTree = "<group>"; };
+		41854A711E4822AA00B91BD0 /* FightFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightFailedViewController.m; sourceTree = "<group>"; };
+		41854A731E4823E200B91BD0 /* SystemMessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageTableView.h; sourceTree = "<group>"; };
+		41854A741E4823E200B91BD0 /* SystemMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageTableView.m; sourceTree = "<group>"; };
+		41854A761E48240B00B91BD0 /* SystemMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageTableViewCell.h; sourceTree = "<group>"; };
+		41854A771E48240B00B91BD0 /* SystemMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageTableViewCell.m; sourceTree = "<group>"; };
+		418DCB381E4852F400035FC6 /* SMTableViewInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTableViewInterceptor.h; sourceTree = "<group>"; };
+		418DCB391E4852F400035FC6 /* SMTableViewInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTableViewInterceptor.m; sourceTree = "<group>"; };
 		41ED79DD1E30E05100488730 /* FriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsView.h; sourceTree = "<group>"; };
 		41ED79DE1E30E05100488730 /* FriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsView.m; sourceTree = "<group>"; };
 		4F3BB22934BE7E4E8BE3234B /* libPods-her..a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-her..a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +192,8 @@
 			children = (
 				047647971E2F69FC00642581 /* TwoChatroomVc.h */,
 				047647981E2F69FC00642581 /* TwoChatroomVc.m */,
+				412135D71E48704D0084D966 /* ReportViewController.h */,
+				412135D81E48704D0084D966 /* ReportViewController.m */,
 			);
 			path = Vcs;
 			sourceTree = "<group>";
@@ -160,6 +201,10 @@
 		0476476E1E2F618A00642581 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4115868B1E4960C9004AAC81 /* TwoChatToolView.h */,
+				4115868C1E4960C9004AAC81 /* TwoChatToolView.m */,
+				41156CA61E4AB4E400B5C498 /* ChatFocusListView.h */,
+				41156CA71E4AB4E400B5C498 /* ChatFocusListView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +222,8 @@
 		047647701E2F618A00642581 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4114978A1E45BCCD000F4DA4 /* HerUserInfo.h */,
+				4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +233,8 @@
 			children = (
 				047647911E2F679800642581 /* MainViewController.h */,
 				047647921E2F679800642581 /* MainViewController.m */,
+				411497841E45BC7B000F4DA4 /* OldPlayerViewController.h */,
+				411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */,
 			);
 			path = Vcs;
 			sourceTree = "<group>";
@@ -199,8 +248,14 @@
 				047647FD1E2F7C6D00642581 /* ShowHintView.m */,
 				047648031E30559E00642581 /* HerTipsView.h */,
 				047648041E30559E00642581 /* HerTipsView.m */,
-				41ED79DD1E30E05100488730 /* FriendsView.h */,
-				41ED79DE1E30E05100488730 /* FriendsView.m */,
+				412135D61E4855540084D966 /* 关注的人tableview */,
+				41854A6D1E48119A00B91BD0 /* LookHerAgainView.h */,
+				41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */,
+				418DCB3B1E4854B800035FC6 /* 系统提示tableview */,
+				411586821E48937B004AAC81 /* FindAnimationView.h */,
+				411586831E48937B004AAC81 /* FindAnimationView.m */,
+				411586851E489585004AAC81 /* FindingView.h */,
+				411586861E489585004AAC81 /* FindingView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +296,8 @@
 			children = (
 				0476479A1E2F6A0C00642581 /* ThreeChatroomVc.h */,
 				0476479B1E2F6A0C00642581 /* ThreeChatroomVc.m */,
+				41854A701E4822AA00B91BD0 /* FightFailedViewController.h */,
+				41854A711E4822AA00B91BD0 /* FightFailedViewController.m */,
 			);
 			path = Vcs;
 			sourceTree = "<group>";
@@ -307,6 +364,30 @@
 				047648071E3058F300642581 /* UIImage+Images.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		412135D61E4855540084D966 /* 关注的人tableview */ = {
+			isa = PBXGroup;
+			children = (
+				41ED79DD1E30E05100488730 /* FriendsView.h */,
+				41ED79DE1E30E05100488730 /* FriendsView.m */,
+				4114978D1E45C002000F4DA4 /* FriendsCell.h */,
+				4114978E1E45C002000F4DA4 /* FriendsCell.m */,
+			);
+			name = "关注的人tableview";
+			sourceTree = "<group>";
+		};
+		418DCB3B1E4854B800035FC6 /* 系统提示tableview */ = {
+			isa = PBXGroup;
+			children = (
+				41854A731E4823E200B91BD0 /* SystemMessageTableView.h */,
+				41854A741E4823E200B91BD0 /* SystemMessageTableView.m */,
+				418DCB381E4852F400035FC6 /* SMTableViewInterceptor.h */,
+				418DCB391E4852F400035FC6 /* SMTableViewInterceptor.m */,
+				41854A761E48240B00B91BD0 /* SystemMessageTableViewCell.h */,
+				41854A771E48240B00B91BD0 /* SystemMessageTableViewCell.m */,
+			);
+			name = "系统提示tableview";
 			sourceTree = "<group>";
 		};
 		BFAFC111DAAF220A527C1005 /* Pods */ = {
@@ -448,21 +529,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418DCB3A1E4852F400035FC6 /* SMTableViewInterceptor.m in Sources */,
+				41156CA81E4AB4E400B5C498 /* ChatFocusListView.m in Sources */,
 				047648051E30559F00642581 /* HerTipsView.m in Sources */,
 				047648081E3058F300642581 /* UIImage+Images.m in Sources */,
 				047647821E2F618A00642581 /* ViewController.m in Sources */,
 				047648021E2F7EA900642581 /* UIColor+Colors.m in Sources */,
+				41854A721E4822AA00B91BD0 /* FightFailedViewController.m in Sources */,
 				0476479F1E2F6A4E00642581 /* HerNameView.m in Sources */,
 				0476479C1E2F6A0C00642581 /* ThreeChatroomVc.m in Sources */,
+				411586871E489585004AAC81 /* FindingView.m in Sources */,
 				0476478A1E2F675C00642581 /* BaseViewController.m in Sources */,
+				411586841E48937B004AAC81 /* FindAnimationView.m in Sources */,
+				41854A781E48240B00B91BD0 /* SystemMessageTableViewCell.m in Sources */,
+				4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */,
 				41ED79DF1E30E05100488730 /* FriendsView.m in Sources */,
+				4115868D1E4960C9004AAC81 /* TwoChatToolView.m in Sources */,
 				047647991E2F69FC00642581 /* TwoChatroomVc.m in Sources */,
 				047647811E2F618A00642581 /* main.m in Sources */,
 				0476478D1E2F676A00642581 /* BaseModel.m in Sources */,
 				047647931E2F679800642581 /* MainViewController.m in Sources */,
+				41854A6F1E48119A00B91BD0 /* LookHerAgainView.m in Sources */,
+				41854A751E4823E200B91BD0 /* SystemMessageTableView.m in Sources */,
+				4114978C1E45BCCD000F4DA4 /* HerUserInfo.m in Sources */,
 				047647FE1E2F7C6D00642581 /* ShowHintView.m in Sources */,
+				412135D91E48704D0084D966 /* ReportViewController.m in Sources */,
 				0476477F1E2F618A00642581 /* AppDelegate.m in Sources */,
 				047647901E2F677C00642581 /* BaseView.m in Sources */,
+				411497861E45BC7B000F4DA4 /* OldPlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
