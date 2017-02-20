@@ -13,7 +13,7 @@
 
 @required
 - (void)clickBackBtnAction;
-- (void)clickFocusBtnAction;
+- (void)clickFocusBtnAction:(UIButton *)btn;
 
 @end
 

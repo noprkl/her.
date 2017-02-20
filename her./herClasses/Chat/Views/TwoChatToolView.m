@@ -43,7 +43,7 @@
         make.left.equalTo(self.left);
     }];
     [self.backButton makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.centerY).offset(20);
+        make.centerY.equalTo(self.centerY).offset(10);
         make.left.equalTo(self.left).offset(10);
     }];
     
@@ -107,9 +107,8 @@
     }
 }
 - (void)clickFocusButtonAction:(UIButton *)btn {
-    btn.selected = !btn.selected;
-    if ([self.toolDelegate respondsToSelector:@selector(clickFocusBtnAction)]) {
-        [self.toolDelegate clickFocusBtnAction];
+    if ([self.toolDelegate respondsToSelector:@selector(clickFocusBtnAction:)]) {
+        [self.toolDelegate clickFocusBtnAction:btn];
     }
 }
 @end

@@ -22,7 +22,9 @@
 #import "ThreeChatroomVc.h"
 
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
-
+{
+    NSInteger count;
+}
 @property (nonatomic, strong) UIButton *herBtn; /**< 按钮 */
 
 @property (nonatomic, strong) UIImage *backImgView; /**< 背景图片 */
@@ -61,6 +63,8 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
     // 进来时 判断哪一个view是显示的
+    // 从零开始计时
+    count = 0;
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -235,10 +239,10 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = 6;
+    NSInteger iCount = 6;
 //    NSInteger count = self.systemMessageArray.count;
     
-    return count;
+    return iCount;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SystemMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:systemMessageTableViewCellid];
@@ -247,7 +251,7 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     cell.backgroundView.backgroundColor = BackGround_Color;
     cell.state = indexPath.row;
 
-    XWeakSelf;
+//    XWeakSelf;
     cell.appointBlock = ^(){
         DLog(@"赴约");
     };
@@ -268,18 +272,17 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.nameView.hidden = !self.nameView.hidden;
     self.findAgainView.hidden = !self.nameView.hidden;
-    static NSInteger count = 3;
-    if (count == 3) {
-        count += 3;
+    static NSInteger iCount = 3;
+    if (iCount == 3) {
+        iCount += 3;
     }else{
-        count -= 3;
+        iCount -= 3;
     }
-    if (count > 3) {
+    if (iCount > 3) {
         self.systemMessagetableView.isAutoScroll = YES;
     }else{
         self.systemMessagetableView.isAutoScroll = NO;
     }
-
 }
 
 #pragma mark
@@ -300,7 +303,7 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     self.findingView.hidden = NO;
     self.ischange = NO;
     
-    self.findingTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changeFindingMessage) userInfo:nil repeats:YES];
+    self.findingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeFindingMessage) userInfo:nil repeats:YES];
 }
 - (void)changeFindingMessage {
     self.ischange = !self.ischange;
@@ -313,10 +316,9 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
         self.findingView.englishMessage = @"Seeking her for you ...";
     }
     
-    static NSInteger count = 0;
     count ++;
     DLog(@"%ld", count);
-    if (count == 5) {
+    if (count == 3) {
         [self.findingTimer invalidate];
         self.findingTimer = nil;
         [self haveFindHer];
@@ -325,6 +327,10 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 - (void)haveFindHer { // 寻找到她了
     self.findingView.chineseMessage = @"找到她了，嗨起来!";
     self.findingView.englishMessage = @"Bingo，high up！";
+    
+    // 计时停止
+    [self.findingTimer invalidate];
+    self.findingTimer = nil;
     [self performSelector:@selector(pushToChatVc) withObject:nil afterDelay:1];
 }
 - (void)pushToChatVc {
@@ -334,6 +340,8 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     TwoChatroomVc *twoChat = [[TwoChatroomVc alloc] init];
     twoChat.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:twoChat animated:YES];
+    self.findingView.chineseMessage = @"请正确对待男女关系!";
+    self.findingView.englishMessage = @"Treat the new relationship right";
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
