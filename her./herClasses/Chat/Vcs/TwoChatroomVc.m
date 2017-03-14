@@ -11,6 +11,7 @@
 #import "ChatFocusListView.h"
 #import "SliderCutSongView.h"
 #import "ChangeSoundAnimationView.h"
+#import "WaverAnimationView.h"
 
 @interface TwoChatroomVc ()<TwoChatToolViewDelegate>
 
@@ -24,6 +25,8 @@
 
 @implementation TwoChatroomVc
 
+#pragma mark
+#pragma mark - 视图加载
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -42,21 +45,29 @@
         make.right.equalTo(self.view.right).offset(-5);
         make.size.equalTo(KSIZE(130, 135));
     }];
+//    Wave *wave = [[Wave alloc] initWithFrame:CGRectMake(30, 64, SCREEN_WIDTH - 60, 100)];
+//    wave.speed = 5;
+//    wave.waveHeight = WAVE_HEIGHT;
+//    wave.backgroundColor = BackGround_Color;
+//    [self.view insertSubview:wave belowSubview:self.chatToolView];
+//    self.soundAnimatioVeiw = wave;
     [self.view addSubview:self.soundAnimatioVeiw];
+
     [self.soundAnimatioVeiw makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.chatToolView.bottom).offset(0);
         make.left.equalTo(self.view.left).offset(30);
         make.centerX.equalTo(self.view.centerX);
-        make.height.equalTo(60);
+        make.height.equalTo(WAVE_HEIGHT);
     }];
     
     SliderCutSongView *sliderView = [[SliderCutSongView alloc] init];
     sliderView.swipBlock = ^(){
         // 开始音乐播放动画
-        [self.soundAnimatioVeiw startAnimation];
+        [self.soundAnimatioVeiw stopAnimation];
     };
     [sliderView show];
-}
+    
+ }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -73,6 +84,8 @@
 }
 #pragma mark - TwoChatToolViewDelegate代理
 - (void)clickBackBtnAction {
+    [self.soundAnimatioVeiw stopAnimation];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)clickFocusBtnAction:(UIButton *)btn {
@@ -155,7 +168,6 @@
         // 设置滑动方向为左、右滑
         swipe.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
         [_soundAnimatioVeiw addGestureRecognizer:swipe];
-
     }
     return _soundAnimatioVeiw;
 }

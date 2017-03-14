@@ -37,6 +37,7 @@
 		413716D71E5AF5D70001F251 /* ChangeSoundAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716D61E5AF5D70001F251 /* ChangeSoundAnimationView.m */; };
 		413716DA1E5AFC350001F251 /* SliderCutSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716D91E5AFC350001F251 /* SliderCutSongView.m */; };
 		413716DD1E5AFE660001F251 /* HUDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716DC1E5AFE660001F251 /* HUDBaseView.m */; };
+		413716E01E5B1A340001F251 /* WaverAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716DF1E5B1A340001F251 /* WaverAnimationView.m */; };
 		41854A6F1E48119A00B91BD0 /* LookHerAgainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */; };
 		41854A721E4822AA00B91BD0 /* FightFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A711E4822AA00B91BD0 /* FightFailedViewController.m */; };
 		41854A751E4823E200B91BD0 /* SystemMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A741E4823E200B91BD0 /* SystemMessageTableView.m */; };
@@ -104,6 +105,8 @@
 		413716D91E5AFC350001F251 /* SliderCutSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCutSongView.m; sourceTree = "<group>"; };
 		413716DB1E5AFE660001F251 /* HUDBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDBaseView.h; sourceTree = "<group>"; };
 		413716DC1E5AFE660001F251 /* HUDBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDBaseView.m; sourceTree = "<group>"; };
+		413716DE1E5B1A340001F251 /* WaverAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaverAnimationView.h; sourceTree = "<group>"; };
+		413716DF1E5B1A340001F251 /* WaverAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaverAnimationView.m; sourceTree = "<group>"; };
 		41854A6D1E48119A00B91BD0 /* LookHerAgainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookHerAgainView.h; sourceTree = "<group>"; };
 		41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookHerAgainView.m; sourceTree = "<group>"; };
 		41854A701E4822AA00B91BD0 /* FightFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightFailedViewController.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				41F8B4881E5A9B6D006E83B4 /* 关注的人列表 */,
 				413716D51E5AF5D70001F251 /* ChangeSoundAnimationView.h */,
 				413716D61E5AF5D70001F251 /* ChangeSoundAnimationView.m */,
+				413716DE1E5B1A340001F251 /* WaverAnimationView.h */,
+				413716DF1E5B1A340001F251 /* WaverAnimationView.m */,
 				413716D81E5AFC350001F251 /* SliderCutSongView.h */,
 				413716D91E5AFC350001F251 /* SliderCutSongView.m */,
 			);
@@ -578,6 +583,7 @@
 				411586841E48937B004AAC81 /* FindAnimationView.m in Sources */,
 				41F8B47E1E5A9111006E83B4 /* AddFocusCell.m in Sources */,
 				41854A781E48240B00B91BD0 /* SystemMessageTableViewCell.m in Sources */,
+				413716E01E5B1A340001F251 /* WaverAnimationView.m in Sources */,
 				4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */,
 				413716DA1E5AFC350001F251 /* SliderCutSongView.m in Sources */,
 				41ED79DF1E30E05100488730 /* FriendsView.m in Sources */,

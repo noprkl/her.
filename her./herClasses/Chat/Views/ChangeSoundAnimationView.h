@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ChangeSoundAnimationView : UIView
+@property (nonatomic, assign) CGFloat speed; /**< 速度 */
 
 // 开始动画
 - (void)startAnimation;

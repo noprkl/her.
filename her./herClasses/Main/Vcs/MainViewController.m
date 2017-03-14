@@ -318,7 +318,7 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     
     count ++;
     DLog(@"%ld", count);
-    if (count == 3) {
+    if (count == 1) {
         [self.findingTimer invalidate];
         self.findingTimer = nil;
         [self haveFindHer];

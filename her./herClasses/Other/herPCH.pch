@@ -31,10 +31,16 @@
 #define HEXColor(var) [UIColor colorWithHexString:var]
 // weak简便写法
 #define XWeakSelf __weak typeof(self) weakSelf = self
-// size 简单写
+// size 简单写CGSize
 #define KSIZE(width, height) CGSizeMake(width, height)
-// point 简单写
+// point 简单写CGPoint
 #define KPOINT(x, y) CGPointMake(x, y)
+
+// 波浪高度
+#define WAVE_HEIGHT 65
+// 角度 53度
+#define KWaveAngle ((M_PI / 180) * 53)
+
 
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS
