@@ -5,6 +5,8 @@
 //  Created by ma c on 17/1/18.
 //  Copyright © 2017年 LXq. All rights reserved.
 //
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
 
 #ifndef herPCH_pch
 #define herPCH_pch
@@ -48,9 +50,12 @@
 #import <AFNetworking.h>         // 网络
 #import <MJExtension.h>          // 数据解析
 #import <UIImageView+WebCache.h> // 图片加载
+#import <HyphenateLite/HyphenateLite.h>
+#import "EaseUI.h"
 
 // 自定义类
 #import "UIColor+Colors.h"          // 颜色类别
 #import "UIImage+Images.h"          // 图片类别
 #import "ShowHintView.h"            // 自定义提示框
 #endif /* herPCH_pch */
+#endif
