@@ -479,6 +479,7 @@
 				TargetAttributes = {
 					0476474F1E2F59FC00642581 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TRN98LTHJF;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -712,13 +713,16 @@
 			baseConfigurationReference = 308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yin liang (T73A5YD8NL)";
+				DEVELOPMENT_TEAM = TRN98LTHJF;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/her./herClasses/Other/herPCH.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/her./herClasses/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Myself.her-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.conanplus.her;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f35a1f67-2a6c-4563-890e-679186f27aa0";
+				PROVISIONING_PROFILE_SPECIFIER = herDevelopmentProfile;
 			};
 			name = Debug;
 		};
@@ -727,13 +731,17 @@
 			baseConfigurationReference = D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: yin liang (TRN98LTHJF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yin liang (TRN98LTHJF)";
+				DEVELOPMENT_TEAM = TRN98LTHJF;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/her./herClasses/Other/herPCH.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/her./herClasses/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Myself.her-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.conanplus.her;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "daeb8c54-f0e3-4c34-8ae2-c4857a1b878c";
+				PROVISIONING_PROFILE_SPECIFIER = herDistributionProfile;
 			};
 			name = Release;
 		};
