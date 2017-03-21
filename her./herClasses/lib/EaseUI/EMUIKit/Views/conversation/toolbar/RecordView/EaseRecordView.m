@@ -29,9 +29,9 @@
 {
     // UIAppearance Proxy Defaults
     EaseRecordView *recordView = [self appearance];
-    recordView.voiceMessageAnimationImages = @[@"EaseUIResource.bundle/VoiceSearchFeedback001",@"EaseUIResource.bundle/VoiceSearchFeedback002",@"EaseUIResource.bundle/VoiceSearchFeedback003",@"EaseUIResource.bundle/VoiceSearchFeedback004",@"EaseUIResource.bundle/VoiceSearchFeedback005",@"EaseUIResource.bundle/VoiceSearchFeedback006",@"EaseUIResource.bundle/VoiceSearchFeedback007",@"EaseUIResource.bundle/VoiceSearchFeedback008",@"EaseUIResource.bundle/VoiceSearchFeedback009",@"EaseUIResource.bundle/VoiceSearchFeedback010",@"EaseUIResource.bundle/VoiceSearchFeedback011",@"EaseUIResource.bundle/VoiceSearchFeedback012",@"EaseUIResource.bundle/VoiceSearchFeedback013",@"EaseUIResource.bundle/VoiceSearchFeedback014",@"EaseUIResource.bundle/VoiceSearchFeedback015",@"EaseUIResource.bundle/VoiceSearchFeedback016",@"EaseUIResource.bundle/VoiceSearchFeedback017",@"EaseUIResource.bundle/VoiceSearchFeedback018",@"EaseUIResource.bundle/VoiceSearchFeedback019",@"EaseUIResource.bundle/VoiceSearchFeedback020"];
-    recordView.upCancelText = NSEaseLocalizedString(@"message.toolBar.record.upCancel", @"Fingers up slide, cancel sending");
-    recordView.loosenCancelText = NSEaseLocalizedString(@"message.toolBar.record.loosenCancel", @"loosen the fingers, to cancel sending");
+    recordView.voiceMessageAnimationImages = @[@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone",@"microphone"];
+    recordView.upCancelText = @"录音中";
+    recordView.loosenCancelText = @"录音中";
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -40,16 +40,37 @@
     if (self) {
         // Initialization code
         UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
-        bgView.backgroundColor = [UIColor grayColor];
+        bgView.backgroundColor = HEXColor(@"#333333");
         bgView.layer.cornerRadius = 5;
         bgView.layer.masksToBounds = YES;
         bgView.alpha = 0.6;
         [self addSubview:bgView];
         
-        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, self.bounds.size.width - 20, self.bounds.size.height - 30)];
-        _recordAnimationView.image = [UIImage imageNamed:@"EaseUIResource.bundle/VoiceSearchFeedback001"];
+        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 134, 134)];
+        _recordAnimationView.image = [UIImage imageNamed:@"microphone"];
         _recordAnimationView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_recordAnimationView];
+        
+        
+        UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(134 + 20, 134+20 - 10, 45, 10)];
+        imageView1.image = [UIImage originalImageNamed:@"Article-voice1"];
+        imageView1.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:imageView1];
+        
+        UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(134 + 20 + 5 /2, 134+20 - 10 - 19, 85/2, 10)];
+        imageView2.image = [UIImage originalImageNamed:@"Article-voice2"];
+        imageView2.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:imageView2];
+       
+        UIImageView *imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(134 + 20 + 5, 134+20 - 10 - 38, 40, 10)];
+        imageView3.image = [UIImage originalImageNamed:@"Article-voice3"];
+        imageView3.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:imageView3];
+        
+        UIImageView *imageView4 = [[UIImageView alloc] initWithFrame:CGRectMake(134 + 20 + 10, 134+20 - 10 - 57, 35, 10)];
+        imageView4.image = [UIImage originalImageNamed:@"Article-voice4"];
+        imageView4.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:imageView4];
         
         _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,
                                                                self.bounds.size.height - 30,
@@ -58,9 +79,9 @@
         
         _textLabel.textAlignment = NSTextAlignmentCenter;
         _textLabel.backgroundColor = [UIColor clearColor];
-        _textLabel.text = NSEaseLocalizedString(@"message.toolBar.record.upCancel", @"Fingers up slide, cancel sending");
+        _textLabel.text = @"录音中";
         [self addSubview:_textLabel];
-        _textLabel.font = [UIFont systemFontOfSize:13];
+        _textLabel.font = [UIFont systemFontOfSize:16];
         _textLabel.textColor = [UIColor whiteColor];
         _textLabel.layer.cornerRadius = 5;
         _textLabel.layer.borderColor = [[UIColor redColor] colorWithAlphaComponent:0.5].CGColor;
@@ -133,45 +154,45 @@
     
     /*
     if (0 < voiceSound <= 0.05) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback001"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone1"]];
     }else if (0.05<voiceSound<=0.10) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback002"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone2"]];
     }else if (0.10<voiceSound<=0.15) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback003"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone3"]];
     }else if (0.15<voiceSound<=0.20) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback004"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone4"]];
     }else if (0.20<voiceSound<=0.25) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback005"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone5"]];
     }else if (0.25<voiceSound<=0.30) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback006"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone6"]];
     }else if (0.30<voiceSound<=0.35) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback007"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone7"]];
     }else if (0.35<voiceSound<=0.40) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback008"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone8"]];
     }else if (0.40<voiceSound<=0.45) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback009"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone9"]];
     }else if (0.45<voiceSound<=0.50) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback010"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone10"]];
     }else if (0.50<voiceSound<=0.55) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback011"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone11"]];
     }else if (0.55<voiceSound<=0.60) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback012"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone12"]];
     }else if (0.60<voiceSound<=0.65) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback013"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone13"]];
     }else if (0.65<voiceSound<=0.70) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback014"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone14"]];
     }else if (0.70<voiceSound<=0.75) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback015"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone15"]];
     }else if (0.75<voiceSound<=0.80) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback016"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone16"]];
     }else if (0.80<voiceSound<=0.85) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback017"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone17"]];
     }else if (0.85<voiceSound<=0.90) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback018"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone18"]];
     }else if (0.90<voiceSound<=0.95) {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback019"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone19"]];
     }else {
-        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/EaseUIResource.bundle/VoiceSearchFeedback020"]];
+        [_recordAnimationView setImage:[UIImage imageNamed:@"EaseUIResource.bundle/microphone20"]];
     }*/
 }
 

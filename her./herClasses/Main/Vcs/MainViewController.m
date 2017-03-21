@@ -21,13 +21,22 @@
 #import "TwoChatroomVc.h"
 #import "ThreeChatroomVc.h"
 
-@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
+#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
+
+
+
+@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate, BMKRadarManagerDelegate, BMKLocationServiceDelegate>
 {
     NSInteger count;
 }
 @property (nonatomic, strong) UIButton *herBtn; /**< 按钮 */
 
-@property (nonatomic, strong) UIImage *backImgView; /**< 背景图片 */
+@property (nonatomic, strong) UIImageView *backGroundImgView; /**< 背景 */
+
+@property (nonatomic, strong) UIImageView *backImgView; /**< 背景图片 */
+@property (nonatomic, strong) UIImageView *findImgView; /**< 找到了图片 */
 
 @property (nonatomic, strong) HerNameView *nameView; /**< 名字 */
 
@@ -48,8 +57,17 @@
 @property (nonatomic, strong) NSTimer *findingTimer; /**< 寻找中定时器 */
 @property (nonatomic, assign) BOOL ischange; /**< 是否改变文字 */
 
+@property (nonatomic, strong) BMKRadarManager *radarManager; /**< 雷达 */
+
+@property (nonatomic, strong) BMKLocationService *locService; /**< 定位 */
+
+@property (nonatomic, assign) CGFloat longitude;  // 经度
+
+@property (nonatomic, assign) CGFloat latitude; // 纬度
 @end
+
 static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
+
 @implementation MainViewController
 
 - (void)viewDidLoad {
@@ -58,17 +76,27 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES];
+    
     [self.navigationController.navigationBar setAlpha:0];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
     // 进来时 判断哪一个view是显示的
+    NSString *userName = [KDefault objectForKey:UserName];
+    if (userName) {
+        self.nameView.hidden = YES;
+        self.findAgainView.hidden = NO;
+    }else{
+        self.nameView.hidden = NO;
+        self.findAgainView.hidden = YES;
+    }
+    
     // 从零开始计时
     count = 0;
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    self.nameView.hidden = YES;
+    self.backGroundImgView.hidden = NO;
     self.findAgainView.hidden = NO;
     self.heartBtn.hidden = NO;
     self.systemMessagetableView.hidden = NO;
@@ -77,11 +105,16 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 - (void)initUI {
     [self.view addSubview:self.herBtn];
     [self.view addSubview:self.nameView];
+    [self.view addSubview:self.backGroundImgView];
     [self.view addSubview:self.heartBtn];
     [self.view addSubview:self.friendView];
     [self.view addSubview:self.findAgainView];
     [self.view addSubview:self.systemMessagetableView];
     [self.view addSubview:self.findingView];
+    
+    // 找到了的动画
+    [self.view addSubview:self.backImgView];
+    [self.view addSubview:self.findImgView];
     
     [self.systemMessagetableView makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.centerX);
@@ -95,6 +128,12 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
         make.centerX.equalTo(self.view.centerX);
         make.top.equalTo(self.view.top).offset(topHeight);
         make.size.equalTo(viewSize);
+    }];
+    [self.backGroundImgView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.nameView.bottom).offset(10);
+        make.bottom.equalTo(self.view.bottom).offset(-30);
+        make.left.equalTo(self.view.left).offset(50);
     }];
     // 再次寻找
     [self.findAgainView makeConstraints:^(MASConstraintMaker *make) {
@@ -124,6 +163,13 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
         make.bottom.equalTo(self.heartBtn.top).offset(-15);
         make.right.equalTo(self.view.right).offset(-15);
     }];
+    [self.backImgView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    [self.findImgView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(UIEdgeInsetsMake(40, 40, 40, 40));
+    }];
+    
 }
 #pragma mark
 #pragma mark - 懒加载
@@ -137,20 +183,48 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     }
     return _herBtn;
 }
-- (UIImage *)backImgView {
+- (UIImageView *)backGroundImgView {
+    if (!_backGroundImgView) {
+        _backGroundImgView = [[UIImageView alloc] init];
+        _backGroundImgView.image = [UIImage imageNamed:@"backGroundImage"];
+    }
+    return _backGroundImgView;
+}
+- (UIImageView *)backImgView {
     if (!_backImgView) {
-//        _backImgView = [UIImage imageNamed:]
+        _backImgView = [[UIImageView alloc] init];
+        _backImgView.image = [UIImage imageNamed:@"flash1"];
+        _backImgView.hidden = YES;
     }
     return _backImgView;
+}
+- (UIImageView *)findImgView {
+    if (!_findImgView) {
+        _findImgView = [[UIImageView alloc] init];
+        _findImgView.image = [UIImage imageNamed:@"child_find"];
+        _findImgView.hidden = YES;
+    }
+    return _findImgView;
 }
 - (HerNameView *)nameView {
     if (!_nameView) {
         _nameView = [[HerNameView alloc] init];
         
-        __weak typeof(self) weakSelf = self;
+        XWeakSelf;
         _nameView.sureBlock = ^(NSString *name){
             if (name.length != 0) {
                 DLog(@"%@", name);
+                
+#pragma mark
+#pragma mark - 设置名字
+                [KDefault setObject:name forKey:UserName];
+                // 同时注册环信账号
+                // 环信重名怎么办？ 约定一个方式 或者后台注册，返回字段，这边登录
+//                [[EMClient sharedClient] registerWithUsername:name password:@"111"];
+                // 如果名字设置成功，隐藏
+                
+                weakSelf.nameView.hidden = YES;
+                weakSelf.findAgainView.hidden = NO;
             }else{
                 [weakSelf showHint:@"名字不能为空哦!" dissAfter:1.5];
             }
@@ -266,12 +340,12 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     return SystemMessageCellHeight;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DLog(@"%ld", indexPath.row);
+    DLog(@"%ld", (long)indexPath.row);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.nameView.hidden = !self.nameView.hidden;
-    self.findAgainView.hidden = !self.nameView.hidden;
+//    self.nameView.hidden = !self.nameView.hidden;
+//    self.findAgainView.hidden = !self.nameView.hidden;
     static NSInteger iCount = 3;
     if (iCount == 3) {
         iCount += 3;
@@ -295,6 +369,15 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     return _findingView;
 }
 - (void)beginFindingAnimation {
+    
+#pragma mark
+#pragma mark - 开始定位
+    // 初始化BMKLocationService
+    _locService = [[BMKLocationService alloc]init];
+//    _locService.delegate = self;
+//    //启动LocationService
+//    [_locService startUserLocationService];
+    
     self.nameView.hidden = YES;
     self.findAgainView.hidden = YES;
     self.heartBtn.hidden = YES;
@@ -305,6 +388,7 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     
     self.findingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeFindingMessage) userInfo:nil repeats:YES];
 }
+
 - (void)changeFindingMessage {
     self.ischange = !self.ischange;
 
@@ -327,22 +411,115 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 - (void)haveFindHer { // 寻找到她了
     self.findingView.chineseMessage = @"找到她了，嗨起来!";
     self.findingView.englishMessage = @"Bingo，high up！";
-    
+    self.backImgView.hidden = NO;
+    self.findImgView.hidden = NO;
+    self.findingView.hidden = YES;
+    NSLog(@"0");
+    UIImage *image1 = [UIImage imageNamed:@"flash2"];
+    UIImage *image2 = [UIImage imageNamed:@"flash1"];
+    NSArray *arr = [NSArray arrayWithObjects:image1, image2, image1, image2, nil];
+    self.backImgView.animationImages = arr;
+    self.backImgView.animationDuration = 1.5;
+    self.backImgView.animationRepeatCount = 0;
+    [self.backImgView startAnimating];
+
     // 计时停止
     [self.findingTimer invalidate];
     self.findingTimer = nil;
-    [self performSelector:@selector(pushToChatVc) withObject:nil afterDelay:1];
+    [_radarManager removeRadarManagerDelegate:self];//不用需移除，否则影响内存释放
+    [self performSelector:@selector(pushToChatVc) withObject:nil afterDelay:1.5];
 }
 - (void)pushToChatVc {
     // 如果有弹窗，弹窗消失
     [self.tipsView dismiss];
-
-    TwoChatroomVc *twoChat = [[TwoChatroomVc alloc] init];
+    
+    [self.backImgView stopAnimating];
+    self.backImgView.hidden = YES;
+    self.findImgView.hidden = YES;
+    self.findingView.hidden = NO;
+    
+//    TwoChatroomVc *twoChat = [[TwoChatroomVc alloc] initWithConversationChatter:@"222" conversationType:(EMConversationTypeChat)];
+//    twoChat.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:twoChat animated:YES];
+    
+    ThreeChatroomVc *twoChat = [[ThreeChatroomVc alloc] initWithConversationChatter:@"222" conversationType:(EMConversationTypeChatRoom)];
     twoChat.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:twoChat animated:YES];
+    
     self.findingView.chineseMessage = @"请正确对待男女关系!";
     self.findingView.englishMessage = @"Treat the new relationship right";
 }
+
+#pragma mark
+#pragma mark - 定位-上传雷达
+//处理位置坐标更新
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    NSLog(@"当前位置信息：didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    
+    
+    CGFloat longitude = userLocation.location.coordinate.longitude;
+    CGFloat latitude = userLocation.location.coordinate.latitude;
+#pragma mark
+#pragma mark - 百度雷达 上传自己位置
+    BMKRadarManager *radarManager = [BMKRadarManager getRadarManagerInstance];
+    self.radarManager = radarManager;
+    // 在不需要时，通过下边的方法使引用计数减1
+    [BMKRadarManager releaseRadarManagerInstance];
+    // 在上传和拉取位置信息前，需要设置userid，否则会自动生成
+    radarManager.userId = @"her";
+    // 通过添加radar delegate获取自动上传时的位置信息，以及获得雷达操作结果
+    [radarManager addRadarManagerDelegate:self];//添加radar delegate
+    
+    //构造我的位置信息
+    BMKRadarUploadInfo *myinfo = [[BMKRadarUploadInfo alloc] init];
+    myinfo.extInfo = @"hello,world";//扩展信息
+    myinfo.pt = CLLocationCoordinate2DMake(latitude, longitude);//我的地理坐标
+    //上传我的位置信息
+    BOOL res = [_radarManager uploadInfoRequest:myinfo];
+    if (res) {
+        NSLog(@"upload 成功");
+    } else {
+        NSLog(@"upload 失败");
+    }
+    [_radarManager startAutoUpload:5];
+    
+#pragma mark
+#pragma mark - 百度雷达-检索位置
+    
+    BMKRadarNearbySearchOption *option = [[BMKRadarNearbySearchOption alloc] init]
+    ;
+    option.radius = 8000;//检索半径
+    option.sortType = BMK_RADAR_SORT_TYPE_DISTANCE_FROM_NEAR_TO_FAR;//排序方式
+    option.centerPt = CLLocationCoordinate2DMake(latitude, longitude);//检索中心点
+    //发起检索
+    BOOL searchRes = [_radarManager getRadarNearbySearchRequest:option];
+    if (searchRes) {
+        NSLog(@"get 成功");// 搜索成功
+    } else {
+        NSLog(@"get 失败");
+    }
+}
+// 搜索结果
+- (void)onGetRadarNearbySearchResult:(BMKRadarNearbyResult *)result error:(BMKRadarErrorCode)error {
+    NSLog(@"onGetRadarNearbySearchResult  %d", error);
+    if (error == BMK_RADAR_NO_ERROR) {// 搜到结果
+        //得到用户的信息
+        BMKRadarNearbyInfo* userInfo = [result.infoList firstObject];
+//        userInfo.userId = [];
+#pragma mark
+#pragma mark - 找到了
+        
+        [self haveFindHer];
+    }
+}
+// 方向变更处理
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+{
+    NSLog(@"heading is %@",userLocation.heading);
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

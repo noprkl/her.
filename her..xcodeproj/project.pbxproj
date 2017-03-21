@@ -26,18 +26,20 @@
 		047648051E30559F00642581 /* HerTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648041E30559E00642581 /* HerTipsView.m */; };
 		047648081E3058F300642581 /* UIImage+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648071E3058F300642581 /* UIImage+Images.m */; };
 		0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3BB22934BE7E4E8BE3234B /* libPods-her..a */; };
+		4109FDEB1E80C17E00EA8A0F /* DuelAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */; };
 		411497861E45BC7B000F4DA4 /* OldPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */; };
 		4114978C1E45BCCD000F4DA4 /* HerUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */; };
 		4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978E1E45C002000F4DA4 /* FriendsCell.m */; };
 		41156CA81E4AB4E400B5C498 /* ChatFocusListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41156CA71E4AB4E400B5C498 /* ChatFocusListView.m */; };
 		411586841E48937B004AAC81 /* FindAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411586831E48937B004AAC81 /* FindAnimationView.m */; };
 		411586871E489585004AAC81 /* FindingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411586861E489585004AAC81 /* FindingView.m */; };
-		4115868D1E4960C9004AAC81 /* TwoChatToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115868C1E4960C9004AAC81 /* TwoChatToolView.m */; };
 		412135D91E48704D0084D966 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412135D81E48704D0084D966 /* ReportViewController.m */; };
 		413716D71E5AF5D70001F251 /* ChangeSoundAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716D61E5AF5D70001F251 /* ChangeSoundAnimationView.m */; };
 		413716DA1E5AFC350001F251 /* SliderCutSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716D91E5AFC350001F251 /* SliderCutSongView.m */; };
 		413716DD1E5AFE660001F251 /* HUDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716DC1E5AFE660001F251 /* HUDBaseView.m */; };
 		413716E01E5B1A340001F251 /* WaverAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 413716DF1E5B1A340001F251 /* WaverAnimationView.m */; };
+		415B0E371E7B955E000E6C84 /* SelectReportMessageVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 415B0E361E7B955E000E6C84 /* SelectReportMessageVc.m */; };
+		4166FC251E795B970038845F /* AppDelegate+ThirdFrameDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4166FC241E795B970038845F /* AppDelegate+ThirdFrameDelegate.m */; };
 		41854A6F1E48119A00B91BD0 /* LookHerAgainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */; };
 		41854A721E4822AA00B91BD0 /* FightFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A711E4822AA00B91BD0 /* FightFailedViewController.m */; };
 		41854A751E4823E200B91BD0 /* SystemMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41854A741E4823E200B91BD0 /* SystemMessageTableView.m */; };
@@ -162,9 +164,15 @@
 		41A7FFFD1E79078800A2D76C /* MKAnnotationView+EMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF291E79078800A2D76C /* MKAnnotationView+EMWebCache.m */; };
 		41A7FFFE1E79078800A2D76C /* NSData+EMImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF2B1E79078800A2D76C /* NSData+EMImageContentType.m */; };
 		41A7FFFF1E79078800A2D76C /* UIButton+EMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF2D1E79078800A2D76C /* UIButton+EMWebCache.m */; };
+		41D5C6AB1E7A463B00CE1B12 /* SendingAnimtionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */; };
+		41DC6CCF1E7F6FD4009A4369 /* SelectReportSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6CCD1E7F6FD4009A4369 /* SelectReportSenderCell.m */; };
+		41DC6CD01E7F6FD4009A4369 /* SelectReportSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41DC6CCE1E7F6FD4009A4369 /* SelectReportSenderCell.xib */; };
+		41DC6CD41E7F6FF4009A4369 /* SelectReportAcceptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6CD21E7F6FF4009A4369 /* SelectReportAcceptCell.m */; };
+		41DC6CD51E7F6FF4009A4369 /* SelectReportAcceptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41DC6CD31E7F6FF4009A4369 /* SelectReportAcceptCell.xib */; };
 		41ED79DF1E30E05100488730 /* FriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ED79DE1E30E05100488730 /* FriendsView.m */; };
 		41F8B47E1E5A9111006E83B4 /* AddFocusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F8B47C1E5A9111006E83B4 /* AddFocusCell.m */; };
 		41F8B4861E5A914D006E83B4 /* DeleFocusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F8B4841E5A914D006E83B4 /* DeleFocusCell.m */; };
+		41FEFC751E7A33AC00EB449E /* ChatPeopleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FEFC741E7A33AC00EB449E /* ChatPeopleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +210,8 @@
 		047648061E3058F300642581 /* UIImage+Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Images.h"; sourceTree = "<group>"; };
 		047648071E3058F300642581 /* UIImage+Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Images.m"; sourceTree = "<group>"; };
 		308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..debug.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..debug.xcconfig"; sourceTree = "<group>"; };
+		4109FDE91E80C17E00EA8A0F /* DuelAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DuelAlertView.h; path = her./herClasses/Chat/Views/DuelAlertView.h; sourceTree = SOURCE_ROOT; };
+		4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuelAlertView.m; path = her./herClasses/Chat/Views/DuelAlertView.m; sourceTree = SOURCE_ROOT; };
 		411497841E45BC7B000F4DA4 /* OldPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldPlayerViewController.h; sourceTree = "<group>"; };
 		411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldPlayerViewController.m; sourceTree = "<group>"; };
 		4114978A1E45BCCD000F4DA4 /* HerUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerUserInfo.h; sourceTree = "<group>"; };
@@ -214,8 +224,6 @@
 		411586831E48937B004AAC81 /* FindAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindAnimationView.m; sourceTree = "<group>"; };
 		411586851E489585004AAC81 /* FindingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindingView.h; sourceTree = "<group>"; };
 		411586861E489585004AAC81 /* FindingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindingView.m; sourceTree = "<group>"; };
-		4115868B1E4960C9004AAC81 /* TwoChatToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoChatToolView.h; sourceTree = "<group>"; };
-		4115868C1E4960C9004AAC81 /* TwoChatToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoChatToolView.m; sourceTree = "<group>"; };
 		412135D71E48704D0084D966 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		412135D81E48704D0084D966 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		413716D51E5AF5D70001F251 /* ChangeSoundAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeSoundAnimationView.h; sourceTree = "<group>"; };
@@ -226,6 +234,10 @@
 		413716DC1E5AFE660001F251 /* HUDBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDBaseView.m; sourceTree = "<group>"; };
 		413716DE1E5B1A340001F251 /* WaverAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaverAnimationView.h; sourceTree = "<group>"; };
 		413716DF1E5B1A340001F251 /* WaverAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaverAnimationView.m; sourceTree = "<group>"; };
+		415B0E351E7B955E000E6C84 /* SelectReportMessageVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReportMessageVc.h; sourceTree = "<group>"; };
+		415B0E361E7B955E000E6C84 /* SelectReportMessageVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectReportMessageVc.m; sourceTree = "<group>"; };
+		4166FC231E795B970038845F /* AppDelegate+ThirdFrameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ThirdFrameDelegate.h"; sourceTree = "<group>"; };
+		4166FC241E795B970038845F /* AppDelegate+ThirdFrameDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ThirdFrameDelegate.m"; sourceTree = "<group>"; };
 		41854A6D1E48119A00B91BD0 /* LookHerAgainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookHerAgainView.h; sourceTree = "<group>"; };
 		41854A6E1E48119A00B91BD0 /* LookHerAgainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookHerAgainView.m; sourceTree = "<group>"; };
 		41854A701E4822AA00B91BD0 /* FightFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightFailedViewController.h; sourceTree = "<group>"; };
@@ -490,12 +502,22 @@
 		41A7FFC51E79078800A2D76C /* EaseConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseConversationCell.h; sourceTree = "<group>"; };
 		41A7FFC61E79078800A2D76C /* EaseConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseConversationCell.m; sourceTree = "<group>"; };
 		41A7FFC81E79078800A2D76C /* EaseUIResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseUIResource.bundle; sourceTree = "<group>"; };
+		41D5C6A91E7A463B00CE1B12 /* SendingAnimtionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingAnimtionView.h; sourceTree = "<group>"; };
+		41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingAnimtionView.m; sourceTree = "<group>"; };
+		41DC6CCC1E7F6FD4009A4369 /* SelectReportSenderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReportSenderCell.h; sourceTree = "<group>"; };
+		41DC6CCD1E7F6FD4009A4369 /* SelectReportSenderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectReportSenderCell.m; sourceTree = "<group>"; };
+		41DC6CCE1E7F6FD4009A4369 /* SelectReportSenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectReportSenderCell.xib; sourceTree = "<group>"; };
+		41DC6CD11E7F6FF4009A4369 /* SelectReportAcceptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReportAcceptCell.h; sourceTree = "<group>"; };
+		41DC6CD21E7F6FF4009A4369 /* SelectReportAcceptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectReportAcceptCell.m; sourceTree = "<group>"; };
+		41DC6CD31E7F6FF4009A4369 /* SelectReportAcceptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectReportAcceptCell.xib; sourceTree = "<group>"; };
 		41ED79DD1E30E05100488730 /* FriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsView.h; sourceTree = "<group>"; };
 		41ED79DE1E30E05100488730 /* FriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsView.m; sourceTree = "<group>"; };
 		41F8B47B1E5A9111006E83B4 /* AddFocusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFocusCell.h; sourceTree = "<group>"; };
 		41F8B47C1E5A9111006E83B4 /* AddFocusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFocusCell.m; sourceTree = "<group>"; };
 		41F8B4831E5A914D006E83B4 /* DeleFocusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleFocusCell.h; sourceTree = "<group>"; };
 		41F8B4841E5A914D006E83B4 /* DeleFocusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleFocusCell.m; sourceTree = "<group>"; };
+		41FEFC731E7A33AC00EB449E /* ChatPeopleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPeopleView.h; sourceTree = "<group>"; };
+		41FEFC741E7A33AC00EB449E /* ChatPeopleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPeopleView.m; sourceTree = "<group>"; };
 		4F3BB22934BE7E4E8BE3234B /* libPods-her..a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-her..a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3379CA09F54DCF5D93A5FD9 /* Pods-her..release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..release.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -586,6 +608,8 @@
 			children = (
 				047647971E2F69FC00642581 /* TwoChatroomVc.h */,
 				047647981E2F69FC00642581 /* TwoChatroomVc.m */,
+				415B0E351E7B955E000E6C84 /* SelectReportMessageVc.h */,
+				415B0E361E7B955E000E6C84 /* SelectReportMessageVc.m */,
 				412135D71E48704D0084D966 /* ReportViewController.h */,
 				412135D81E48704D0084D966 /* ReportViewController.m */,
 			);
@@ -595,8 +619,6 @@
 		0476476E1E2F618A00642581 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4115868B1E4960C9004AAC81 /* TwoChatToolView.h */,
-				4115868C1E4960C9004AAC81 /* TwoChatToolView.m */,
 				41F8B4881E5A9B6D006E83B4 /* 关注的人列表 */,
 				413716D51E5AF5D70001F251 /* ChangeSoundAnimationView.h */,
 				413716D61E5AF5D70001F251 /* ChangeSoundAnimationView.m */,
@@ -604,6 +626,16 @@
 				413716DF1E5B1A340001F251 /* WaverAnimationView.m */,
 				413716D81E5AFC350001F251 /* SliderCutSongView.h */,
 				413716D91E5AFC350001F251 /* SliderCutSongView.m */,
+				41FEFC731E7A33AC00EB449E /* ChatPeopleView.h */,
+				41FEFC741E7A33AC00EB449E /* ChatPeopleView.m */,
+				41D5C6A91E7A463B00CE1B12 /* SendingAnimtionView.h */,
+				41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */,
+				41DC6CCC1E7F6FD4009A4369 /* SelectReportSenderCell.h */,
+				41DC6CCD1E7F6FD4009A4369 /* SelectReportSenderCell.m */,
+				41DC6CCE1E7F6FD4009A4369 /* SelectReportSenderCell.xib */,
+				41DC6CD11E7F6FF4009A4369 /* SelectReportAcceptCell.h */,
+				41DC6CD21E7F6FF4009A4369 /* SelectReportAcceptCell.m */,
+				41DC6CD31E7F6FF4009A4369 /* SelectReportAcceptCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -664,6 +696,8 @@
 			children = (
 				047647741E2F618A00642581 /* AppDelegate.h */,
 				047647751E2F618A00642581 /* AppDelegate.m */,
+				4166FC231E795B970038845F /* AppDelegate+ThirdFrameDelegate.h */,
+				4166FC241E795B970038845F /* AppDelegate+ThirdFrameDelegate.m */,
 				047647761E2F618A00642581 /* Info.plist */,
 				047647771E2F618A00642581 /* main.m */,
 				047647781E2F618A00642581 /* ViewController.h */,
@@ -704,6 +738,8 @@
 		0476477D1E2F618A00642581 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4109FDE91E80C17E00EA8A0F /* DuelAlertView.h */,
+				4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1472,6 +1508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41DC6CD01E7F6FD4009A4369 /* SelectReportSenderCell.xib in Resources */,
 				047647801E2F618A00642581 /* Info.plist in Resources */,
 				41A700411E79078800A2D76C /* EaseUIResource.bundle in Resources */,
 				047647631E2F59FD00642581 /* LaunchScreen.storyboard in Resources */,
@@ -1479,6 +1516,7 @@
 				41A700131E79078800A2D76C /* MWPhotoBrowser.bundle in Resources */,
 				41A7FFE81E79078800A2D76C /* MJRefresh.bundle in Resources */,
 				0476475E1E2F59FD00642581 /* Main.storyboard in Resources */,
+				41DC6CD51E7F6FF4009A4369 /* SelectReportAcceptCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,6 +1645,7 @@
 				41A700261E79078800A2D76C /* EaseLocationViewController.m in Sources */,
 				41A7003F1E79078800A2D76C /* EaseRecordView.m in Sources */,
 				41A7000F1E79078800A2D76C /* PSTGridLayoutInfo.m in Sources */,
+				41DC6CD41E7F6FF4009A4369 /* SelectReportAcceptCell.m in Sources */,
 				413716E01E5B1A340001F251 /* WaverAnimationView.m in Sources */,
 				41A7FFD21E79078800A2D76C /* EMCDDeviceManagerBase.m in Sources */,
 				4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */,
@@ -1617,17 +1656,19 @@
 				41A700161E79078800A2D76C /* EaseMessageModel.m in Sources */,
 				41A700231E79078800A2D76C /* EaseEmotionManager.m in Sources */,
 				41A7FFEF1E79078800A2D76C /* MWGridViewController.m in Sources */,
+				41DC6CCF1E7F6FD4009A4369 /* SelectReportSenderCell.m in Sources */,
 				41A700341E79078800A2D76C /* EaseBubbleView+Text.m in Sources */,
 				41A700001E79078800A2D76C /* UIImage+EMGIF.m in Sources */,
 				413716DA1E5AFC350001F251 /* SliderCutSongView.m in Sources */,
 				41ED79DF1E30E05100488730 /* FriendsView.m in Sources */,
 				41A7001B1E79078800A2D76C /* UIViewController+DismissKeyboard.m in Sources */,
 				41A700391E79078800A2D76C /* EaseChatToolbarItem.m in Sources */,
+				41D5C6AB1E7A463B00CE1B12 /* SendingAnimtionView.m in Sources */,
 				41A7FFED1E79078800A2D76C /* MWCaptionView.m in Sources */,
-				4115868D1E4960C9004AAC81 /* TwoChatToolView.m in Sources */,
 				047647991E2F69FC00642581 /* TwoChatroomVc.m in Sources */,
 				41A7FFFA1E79078800A2D76C /* EMSDWebImageDownloaderOperation.m in Sources */,
 				41A7FFCF1E79078800A2D76C /* EMCDDeviceManager+Microphone.m in Sources */,
+				41FEFC751E7A33AC00EB449E /* ChatPeopleView.m in Sources */,
 				047647811E2F618A00642581 /* main.m in Sources */,
 				41A7003B1E79078800A2D76C /* EaseTextView.m in Sources */,
 				0476478D1E2F676A00642581 /* BaseModel.m in Sources */,
@@ -1651,6 +1692,8 @@
 				41A7FFDD1E79078800A2D76C /* MJRefreshFooter.m in Sources */,
 				4114978C1E45BCCD000F4DA4 /* HerUserInfo.m in Sources */,
 				41A7FFE91E79078800A2D76C /* MJRefreshConst.m in Sources */,
+				4109FDEB1E80C17E00EA8A0F /* DuelAlertView.m in Sources */,
+				4166FC251E795B970038845F /* AppDelegate+ThirdFrameDelegate.m in Sources */,
 				41A700011E79078800A2D76C /* UIImage+EMMultiFormat.m in Sources */,
 				41F8B4861E5A914D006E83B4 /* DeleFocusCell.m in Sources */,
 				41A7003C1E79078800A2D76C /* EaseFaceView.m in Sources */,
@@ -1681,6 +1724,7 @@
 				41A7001A1E79078800A2D76C /* NSString+Valid.m in Sources */,
 				047647901E2F677C00642581 /* BaseView.m in Sources */,
 				41A7FFFF1E79078800A2D76C /* UIButton+EMWebCache.m in Sources */,
+				415B0E371E7B955E000E6C84 /* SelectReportMessageVc.m in Sources */,
 				41A7001D1E79078800A2D76C /* EaseChineseToPinyin.m in Sources */,
 				41A700081E79078800A2D76C /* PSTCollectionViewCell.m in Sources */,
 				41A7FFDA1E79078800A2D76C /* MJRefreshAutoFooter.m in Sources */,

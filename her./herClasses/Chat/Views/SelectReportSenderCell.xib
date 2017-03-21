@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectReportSenderCell" rowHeight="81" id="KGk-i7-Jjw" customClass="SelectReportSenderCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="The-boy-picture" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-fF-vJV">
+                        <rect key="frame" x="5" y="5" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="olD-f3-g3Y"/>
+                            <constraint firstAttribute="width" constant="35" id="qgS-Sk-cs3"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accept" translatesAutoresizingMaskIntoConstraints="NO" id="ZzU-gB-jTJ">
+                        <rect key="frame" x="45" y="5" width="64.5" height="39.5"/>
+                        <rect key="contentStretch" x="0.69999999999999996" y="0.69999999999999996" width="0.0" height="0.0"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="mvI-oo-wJJ">
+                        <rect key="frame" x="60" y="15" width="39.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPB-Hj-jap">
+                        <rect key="frame" x="275" y="25" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="JQs-jy-GTB"/>
+                            <constraint firstAttribute="height" constant="30" id="fI0-78-o76"/>
+                        </constraints>
+                        <state key="normal" image="unselect"/>
+                        <state key="selected" image="selected"/>
+                        <connections>
+                            <action selector="clickSelectBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sZu-R9-19S"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YHv-fF-vJV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="494-eX-bQq"/>
+                    <constraint firstItem="CPB-Hj-jap" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EPT-la-ux8"/>
+                    <constraint firstItem="ZzU-gB-jTJ" firstAttribute="trailing" secondItem="mvI-oo-wJJ" secondAttribute="trailing" constant="10" id="G8w-Qe-VFK"/>
+                    <constraint firstItem="ZzU-gB-jTJ" firstAttribute="top" secondItem="mvI-oo-wJJ" secondAttribute="top" constant="-10" id="NhR-Pf-85Z"/>
+                    <constraint firstItem="YHv-fF-vJV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="TFv-8F-8C4"/>
+                    <constraint firstItem="ZzU-gB-jTJ" firstAttribute="leading" secondItem="mvI-oo-wJJ" secondAttribute="leading" constant="-15" id="ZZm-Pe-A94"/>
+                    <constraint firstItem="ZzU-gB-jTJ" firstAttribute="bottom" secondItem="mvI-oo-wJJ" secondAttribute="bottom" constant="10" id="irW-9o-sQ5"/>
+                    <constraint firstAttribute="trailing" secondItem="CPB-Hj-jap" secondAttribute="trailing" constant="15" id="jSt-IU-ncX"/>
+                    <constraint firstItem="mvI-oo-wJJ" firstAttribute="leading" secondItem="YHv-fF-vJV" secondAttribute="trailing" constant="20" id="nnF-ZG-khn"/>
+                    <constraint firstItem="mvI-oo-wJJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="yqJ-Mr-7zE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageLabel" destination="mvI-oo-wJJ" id="w3f-De-PDL"/>
+                <outlet property="selectBtn" destination="CPB-Hj-jap" id="jE5-qj-exQ"/>
+            </connections>
+            <point key="canvasLocation" x="-1240" y="119"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="The-boy-picture" width="40" height="40"/>
+        <image name="accept" width="35" height="30"/>
+        <image name="selected" width="34" height="33"/>
+        <image name="unselect" width="36" height="37"/>
+    </resources>
+</document>

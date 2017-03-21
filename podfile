@@ -9,6 +9,7 @@ target 'her.' do
 	pod 'MJExtension', '~> 3.0.13'
 	pod 'SDWebImage', '~> 3.7.0'
 	pod 'HyphenateLite'
+	pod 'BaiduMapKit' #百度地图SDK
   # Pods for her.
 
 end

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LXq. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface ThreeChatroomVc : BaseViewController
+@interface ThreeChatroomVc : EaseMessageViewController
 
 @end

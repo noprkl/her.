@@ -71,6 +71,18 @@
         if ([UIDevice currentDevice].systemVersion.floatValue == 7.0) {
             self.messageNameHeight = 15;
         }
+        
+#pragma mark
+#pragma mark - 给气泡添加手势
+        
+        UILongPressGestureRecognizer *tapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(bubbleViewLongPressAction:)];
+        if (model.bodyType == EMMessageBodyTypeText) { // 文字消息
+            tapRecognizer.minimumPressDuration = 2.0;
+        }else{ // 语音消息
+            tapRecognizer.minimumPressDuration = 0.0;
+        }
+        
+        [_bubbleView addGestureRecognizer:tapRecognizer];
     }
     
     return self;
@@ -145,6 +157,7 @@
     } else {
         [self configureRecvLayoutConstraints];
     }
+    
 }
 
 /*!
@@ -294,6 +307,7 @@
                 break;
         }
     }
+    
 }
 
 - (void)setMessageNameFont:(UIFont *)messageNameFont

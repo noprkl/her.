@@ -9,7 +9,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Hyphenate Inc.
  */
-
+#define kheightLine 5
 #import "EaseChatToolbar.h"
 
 #import "EaseFaceView.h"
@@ -34,6 +34,7 @@
 @property (nonatomic) CGFloat previousTextViewContentHeight;//上一次inputTextView的contentSize.height
 @property (nonatomic) NSLayoutConstraint *inputViewWidthItemsLeftConstraint;
 @property (nonatomic) NSLayoutConstraint *inputViewWidthoutItemsLeftConstraint;
+@property (nonatomic, strong) UIView *line; /**< 线 */
 
 @end
 
@@ -105,13 +106,18 @@
  @discussion
  @result
  */
+// 语音背景
+- (void)setBackgroundImage:(UIImage *)backgroundImage {
+    _backgroundImage = backgroundImage;
+    self.backgroundImageView.image = backgroundImage;
+}
 - (void)_setupSubviews
 {
     //backgroundImageView
     _backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     _backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _backgroundImageView.backgroundColor = [UIColor clearColor];
-    _backgroundImageView.image = [[UIImage imageNamed:@"EaseUIResource.bundle/messageToolbarBg"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:10];
+    _backgroundImageView.image = [[UIImage imageNamed:@"语音背景"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:10];
     [self addSubview:_backgroundImageView];
     
     //toolbar
@@ -130,21 +136,26 @@
     _inputTextView.scrollEnabled = YES;
     _inputTextView.returnKeyType = UIReturnKeySend;
     _inputTextView.enablesReturnKeyAutomatically = YES; // UITextView内部判断send按钮是否可以用
-    _inputTextView.placeHolder = NSEaseLocalizedString(@"message.toolBar.inputPlaceHolder", @"input a new message");
+//    _inputTextView.placeHolder = NSEaseLocalizedString(@"message.toolBar.inputPlaceHolder", @"input a new message");
     _inputTextView.delegate = self;
     _inputTextView.backgroundColor = [UIColor clearColor];
-    _inputTextView.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
-    _inputTextView.layer.borderWidth = 0.65f;
-    _inputTextView.layer.cornerRadius = 6.0f;
+//    _inputTextView.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
+//    _inputTextView.layer.borderWidth = 0.65f;
+//    _inputTextView.layer.cornerRadius = 6.0f;
     _previousTextViewContentHeight = [self _getTextViewContentH:_inputTextView];
     [_toolbarView addSubview:_inputTextView];
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(40,_inputTextView.frame.size.height + self.verticalPadding, SCREEN_WIDTH - 80, 0.50f)];
+    NSLog(@"%lf", self.horizontalPadding);
+    lineView.backgroundColor = [UIColor colorWithHexString:@"#999999"];
+    self.line = lineView;
+    [self addSubview:lineView];
     
     //change input type
     UIButton *styleChangeButton = [[UIButton alloc] init];
     styleChangeButton.accessibilityIdentifier = @"style";
     styleChangeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [styleChangeButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_record"] forState:UIControlStateNormal];
-    [styleChangeButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_keyboard"] forState:UIControlStateSelected];
+    [styleChangeButton setImage:[UIImage imageNamed:@"Phonetic"] forState:UIControlStateNormal];
+    [styleChangeButton setImage:[UIImage imageNamed:@"character-input"] forState:UIControlStateSelected];
     [styleChangeButton addTarget:self action:@selector(styleButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     EaseChatToolbarItem *styleItem = [[EaseChatToolbarItem alloc] initWithButton:styleChangeButton withView:nil];
@@ -155,10 +166,11 @@
     self.recordButton.accessibilityIdentifier = @"record";
     self.recordButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [self.recordButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_recordBg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateNormal];
-    [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_recordSelectedBg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateHighlighted];
-    [self.recordButton setTitle:kTouchToRecord forState:UIControlStateNormal];
-    [self.recordButton setTitle:kTouchToFinish forState:UIControlStateHighlighted];
+    [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"语音背景"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateNormal];
+    [self.recordButton setBackgroundImage:[[UIImage imageNamed:@"语音背景"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forState:UIControlStateHighlighted];
+    
+    [self.recordButton setTitle:@"按住说话" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"松开发送语音" forState:UIControlStateHighlighted];
     self.recordButton.hidden = YES;
     [self.recordButton addTarget:self action:@selector(recordButtonTouchDown) forControlEvents:UIControlEventTouchDown];
     [self.recordButton addTarget:self action:@selector(recordButtonTouchUpOutside) forControlEvents:UIControlEventTouchUpOutside];
@@ -172,9 +184,9 @@
     self.faceButton = [[UIButton alloc] init];
     self.faceButton.accessibilityIdentifier = @"face";
     self.faceButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self.faceButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_face"] forState:UIControlStateNormal];
-    [self.faceButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_faceSelected"] forState:UIControlStateHighlighted];
-    [self.faceButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_keyboard"] forState:UIControlStateSelected];
+    [self.faceButton setImage:[UIImage imageNamed:@"expression"] forState:UIControlStateNormal];
+    [self.faceButton setImage:[UIImage imageNamed:@"expression"] forState:UIControlStateHighlighted];
+    [self.faceButton setImage:[UIImage imageNamed:@"character-input"] forState:UIControlStateSelected];
     [self.faceButton addTarget:self action:@selector(faceButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     EaseChatToolbarItem *faceItem = [[EaseChatToolbarItem alloc] initWithButton:self.faceButton withView:self.faceView];
     
@@ -188,7 +200,7 @@
     [self.moreButton addTarget:self action:@selector(moreButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     EaseChatToolbarItem *moreItem = [[EaseChatToolbarItem alloc] initWithButton:self.moreButton withView:self.moreView];
     
-    [self setInputViewRightItems:@[faceItem, moreItem]];
+    [self setInputViewRightItems:@[faceItem]];
 }
 
 - (void)dealloc
@@ -205,7 +217,7 @@
 - (UIView *)recordView
 {
     if (_recordView == nil) {
-        _recordView = [[EaseRecordView alloc] initWithFrame:CGRectMake(90, 130, 140, 140)];
+        _recordView = [[EaseRecordView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 200) / 2, 100, 200, 200)];
     }
     
     return _recordView;
@@ -571,6 +583,9 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     [textView resignFirstResponder];
+    CGRect lineRect = self.line.frame;
+    lineRect.origin.y = [self _getTextViewContentH:self.inputTextView] + kheightLine;
+    self.line.frame = lineRect;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -580,6 +595,9 @@
             [self.delegate didSendText:textView.text];
             self.inputTextView.text = @"";
             [self _willShowInputTextViewToHeight:[self _getTextViewContentH:self.inputTextView]];
+            CGRect lineRect = self.line.frame;
+            lineRect.origin.y = [self _getTextViewContentH:self.inputTextView] + kheightLine;
+            self.line.frame = lineRect;
         }
         
         return NO;
@@ -604,6 +622,9 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     [self _willShowInputTextViewToHeight:[self _getTextViewContentH:textView]];
+    CGRect lineRect = self.line.frame;
+    lineRect.origin.y = [self _getTextViewContentH:self.inputTextView] + kheightLine;
+    self.line.frame = lineRect;
 }
 
 #pragma mark - DXFaceDelegate
@@ -701,6 +722,9 @@
             }
         }
     }
+    CGRect lineRect = self.line.frame;
+    lineRect.origin.y = [self _getTextViewContentH:self.inputTextView] + kheightLine;
+    self.line.frame = lineRect;
 }
 
 - (void)sendFaceWithEmotion:(EaseEmotion *)emotion

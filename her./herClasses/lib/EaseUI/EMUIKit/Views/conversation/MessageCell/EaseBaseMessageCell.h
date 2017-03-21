@@ -53,5 +53,4 @@ extern NSString *const EaseMessageCellIdentifierSendFile;
  *  昵称是否显示
  */
 @property (nonatomic) BOOL messageNameIsHidden UI_APPEARANCE_SELECTOR; //default NO;
-
 @end

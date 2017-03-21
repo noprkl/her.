@@ -506,4 +506,6 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 - (BOOL)shouldSendHasReadAckForMessage:(EMMessage *)message
                                  read:(BOOL)read;
 
+- (void)_audioMessageCellSelected:(id<IMessageModel>)model;
+
 @end

@@ -63,6 +63,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     EaseMessageCell *cell = [self appearance];
     cell.statusSize = 20;
     cell.activitySize = 20;
+//    cell.activity.frame = CGRectMake(0, 0, 15, 15);
     cell.bubbleMaxWidth = 200;
     cell.leftBubbleMargin = UIEdgeInsetsMake(8, 15, 8, 10);
     cell.rightBubbleMargin = UIEdgeInsetsMake(8, 10, 8, 15);
@@ -124,7 +125,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     _statusButton.accessibilityIdentifier = @"status";
     _statusButton.translatesAutoresizingMaskIntoConstraints = NO;
     _statusButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [_statusButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/messageSendFail"] forState:UIControlStateNormal];
+    [_statusButton setImage:[UIImage imageNamed:@"Did-not-send"] forState:UIControlStateNormal];
     [_statusButton addTarget:self action:@selector(statusAction) forControlEvents:UIControlEventTouchUpInside];
     _statusButton.hidden = YES;
     [self.contentView addSubview:_statusButton];
@@ -152,6 +153,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     [self.contentView addSubview:_hasRead];
     
     _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    _activity = [[SendingAnimtionView alloc] init];
     _activity.accessibilityIdentifier = @"sending";
     _activity.translatesAutoresizingMaskIntoConstraints = NO;
     _activity.backgroundColor = [UIColor clearColor];
@@ -217,10 +219,23 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     
     [self _setupConstraints];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bubbleViewTapAction:)];
-    [_bubbleView addGestureRecognizer:tapRecognizer];
+//    
+#pragma mark
+#pragma mark - 给气泡添加手势 放在 EaseBaseMessageCell 里
+//
+//    UILongPressGestureRecognizer *tapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(bubbleViewLongPressAction:)];
+//    if (_messageType == EMMessageBodyTypeText) { // 文字消息
+//        tapRecognizer.minimumPressDuration = 2.0;
+//    }else{ // 语音消息
+//        tapRecognizer.minimumPressDuration = 0.0;
+//    }
+//    
+//    [_bubbleView addGestureRecognizer:tapRecognizer];
     
-    UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarViewTapAction:)];
+#pragma mark
+#pragma mark - 给头像添加手势
+    UILongPressGestureRecognizer *tapRecognizer2 = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(avatarViewLongPressAction:)];
+    tapRecognizer2.minimumPressDuration = 2.0;
     [_avatarView addGestureRecognizer:tapRecognizer2];
 }
 
@@ -425,6 +440,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
 - (void)setActivitySize:(CGFloat)activitySize
 {
     _activitySize = activitySize;
+    
     [self _updateActivityWidthConstraint];
 }
 
@@ -661,6 +677,43 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     }
 }
 
+#pragma mark
+#pragma mark - 气泡长按手势
+- (void)bubbleViewLongPressAction:(UILongPressGestureRecognizer *)tapRecognizer
+{
+    if (_model.bodyType == EMMessageBodyTypeText) {
+        if (!_delegate) {
+            return;
+        }
+        if(tapRecognizer.state == UIGestureRecognizerStateBegan){
+            if ([_delegate respondsToSelector:@selector(messageCellSelected:)]) {
+                NSLog(@"%@", _model.text);
+                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string = _model.text;
+                [self showHint:@"已复制" dissAfter:1.5];
+                return;
+            }
+        }
+    }else if (_model.bodyType == EMMessageBodyTypeVoice){
+        if(tapRecognizer.state == UIGestureRecognizerStateBegan){
+            [_delegate messageCellSelected:_model];
+        }
+        
+    }
+    
+}
+- (void)showHint:(NSString *)message dissAfter:(CGFloat)delay {
+    ShowHintView *hintView = [[ShowHintView alloc] init];
+    hintView.alertStr = message;
+    hintView.offsetY = 160;
+    hintView.width = 90;
+    hintView.fontSize = 16;
+    hintView.fontColor = HEXColor(@"#ffffff");
+    [hintView show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [hintView dismiss];
+    });
+}
 /*!
  @method
  @brief 头像的点击事件
@@ -673,7 +726,20 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
         [_delegate avatarViewSelcted:_model];
     }
 }
-
+/*!
+ @method
+ @brief 头像的长按事件
+ @discussion
+ @result
+ */
+- (void)avatarViewLongPressAction:(UILongPressGestureRecognizer *)tapRecognizer
+{
+    if(tapRecognizer.state == UIGestureRecognizerStateBegan){
+        if ([_delegate respondsToSelector:@selector(avatarViewSelcted:)]) {
+            [_delegate avatarViewSelcted:_model];
+        }
+    }
+}
 /*!
  @method
  @brief 发送失败按钮的点击事件，进行消息重发

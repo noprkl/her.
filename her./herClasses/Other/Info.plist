@@ -39,5 +39,15 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>photoLibraryDesciption</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>microphoneDesciption</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>是否允许开启定位？</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>开启定位</string>
+	<key>NSCameraUsageDescription</key>
+	<string>cameraDesciption</string>
 </dict>
 </plist>

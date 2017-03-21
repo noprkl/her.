@@ -10,4 +10,6 @@
 
 @interface ReportViewController : BaseViewController
 
+@property (nonatomic, strong) NSArray *reportMessageArr; /**< 举报数据 */
+
 @end

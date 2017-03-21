@@ -16,6 +16,7 @@
 #import "IMessageModel.h"
 
 #import "EaseBubbleView.h"
+#import "SendingAnimtionView.h"
 
 /** @brief 缩略图宽度(当缩略图宽度为0或者宽度大于高度时) */
 #define kEMMessageImageSizeWidth 120
@@ -44,7 +45,7 @@ typedef enum{
     UILabel *_hasRead;
     EaseBubbleView *_bubbleView;
     UIActivityIndicatorView *_activity;
-
+//    SendingAnimtionView *_activity;
     
     NSLayoutConstraint *_statusWidthConstraint;
 }
@@ -52,6 +53,7 @@ typedef enum{
 @property (weak, nonatomic) id<EaseMessageCellDelegate> delegate;
 
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
+//@property (nonatomic, strong) SendingAnimtionView *activity;
 
 @property (strong, nonatomic) UIImageView *avatarView;
 
@@ -212,5 +214,11 @@ typedef enum{
  */
 - (void)avatarViewSelcted:(id<IMessageModel>)model;
 
+/**
+ 气泡长按手势
+
+ @param tapRecognizer <#tapRecognizer description#>
+ */
+- (void)bubbleViewLongPressAction:(UILongPressGestureRecognizer *)tapRecognizer;
 @end
 

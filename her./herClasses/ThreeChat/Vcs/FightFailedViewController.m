@@ -10,6 +10,16 @@
 
 @interface FightFailedViewController ()
 
+@property (nonatomic, strong) UIImageView *titleBg; /**< 标题背景 */
+
+@property (nonatomic, strong) UILabel *shareLabel; /**< 分享到盆友圈 */
+
+@property (nonatomic, strong) UIButton *shareBtn; /**< 朋友圈分享 */
+
+@property (nonatomic, strong) UILabel *oneMoreLabel; /**< 更多 */
+
+@property (nonatomic, strong) UIImageView *backImgView; /**< 背景 */
+
 @end
 
 @implementation FightFailedViewController

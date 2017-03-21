@@ -37,6 +37,29 @@
     _alertStr = alertStr;
     self.alertLabel.text = alertStr;
 }
+//- (void)setOffsetY:(CGFloat)offsetY {
+//    _offsetY = offsetY;
+//    CGFloat width = 250;
+//    CGFloat height = 50;
+//    CGFloat x = (SCREEN_WIDTH - width) / 2;
+//    CGFloat y = offsetY;
+//    CGRect rect = self.frame;
+//    rect = CGRectMake(x, y, width, height);
+//    self.frame = rect;
+//}
+
+- (void)setFontColor:(UIColor *)fontColor {
+    _fontColor = fontColor;
+    self.alertLabel.textColor = fontColor;
+}
+- (void)setFontSize:(CGFloat)fontSize {
+    _fontSize = fontSize;
+    self.alertLabel.font = [UIFont systemFontOfSize:fontSize];
+}
+- (void)setBackGroundColor:(UIColor *)backGroundColor {
+    _backGroundColor = backGroundColor;
+    self.alertLabel.backgroundColor = backGroundColor;
+}
 #pragma mark
 #pragma mark - 懒加载
 - (UILabel *)alertLabel {
@@ -46,7 +69,7 @@
         _alertLabel.font = [UIFont systemFontOfSize:19];
         _alertLabel.textAlignment = NSTextAlignmentCenter;
         _alertLabel.backgroundColor = Alert_Color;
-
+        _alertLabel.numberOfLines = 0;
         _alertLabel.layer.cornerRadius = 5;
         _alertLabel.layer.masksToBounds = YES;
     }
@@ -63,11 +86,17 @@
     return _overLayer;
 }
 - (void)show {
-    
     CGFloat width = 250;
+    if (_width) {
+        width = _width;
+    }
+    
     CGFloat height = 50;
     CGFloat x = (SCREEN_WIDTH - width) / 2;
     CGFloat y = (SCREEN_HEIGHT - height) / 2;
+    if (_offsetY) {
+        y = _offsetY;
+    }
     //获取主window
     UIWindow * keyWindow = [[UIApplication sharedApplication] keyWindow];
     self.overLayer.frame = CGRectMake(x, y, width, height);
@@ -101,13 +130,13 @@
     
     self.overLayer.alpha = 0;
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.overLayer.alpha = 1;
         self.transform = CGAffineTransformIdentity;
     }];
 }
 - (void)fadeOut {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.overLayer.alpha = 0;
         self.transform = CGAffineTransformMakeScale(0.3, 0.3);
         

@@ -6,8 +6,11 @@
 //  Copyright © 2017年 LXq. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface TwoChatroomVc : BaseViewController
+@interface TwoChatroomVc : EaseMessageViewController
+
+
+@property (nonatomic, strong) NSString *userName; /**< 对方名字 */
 
 @end
