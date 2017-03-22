@@ -84,7 +84,7 @@
         _findAgainLabel = [[UILabel alloc] init];
         _findAgainLabel.textColor = [UIColor colorWithHexString:@"#333333"];
         _findAgainLabel.font = [UIFont systemFontOfSize:19];
-        _findAgainLabel.text = @"继续寻找附近的她？";
+        _findAgainLabel.text = @"继续寻找附近的他？";
     }
     return _findAgainLabel;
 }
@@ -92,7 +92,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"Continue to look for her？";
+        _titleLabel.text = @"Continue to look for him？";
         _titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
         _titleLabel.font = [UIFont systemFontOfSize:18];
     }

@@ -27,7 +27,6 @@
 		047648081E3058F300642581 /* UIImage+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 047648071E3058F300642581 /* UIImage+Images.m */; };
 		0EFEAE75863C75FB57ADB519 /* libPods-her..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3BB22934BE7E4E8BE3234B /* libPods-her..a */; };
 		4109FDEB1E80C17E00EA8A0F /* DuelAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */; };
-		411497861E45BC7B000F4DA4 /* OldPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */; };
 		4114978C1E45BCCD000F4DA4 /* HerUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */; };
 		4114978F1E45C002000F4DA4 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114978E1E45C002000F4DA4 /* FriendsCell.m */; };
 		41156CA81E4AB4E400B5C498 /* ChatFocusListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41156CA71E4AB4E400B5C498 /* ChatFocusListView.m */; };
@@ -167,6 +166,7 @@
 		41A975F61E822B94000BE965 /* DuelAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975F51E822B94000BE965 /* DuelAnimationView.m */; };
 		41A975F91E822D3B000BE965 /* DuelAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975F81E822D3B000BE965 /* DuelAudioManager.m */; };
 		41A975FC1E823156000BE965 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975FB1E823156000BE965 /* TableViewCell.m */; };
+		41A9783D1E829DD8000BE965 /* UnableUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A9783C1E829DD8000BE965 /* UnableUserView.m */; };
 		41D5C6AB1E7A463B00CE1B12 /* SendingAnimtionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */; };
 		41DC6CCF1E7F6FD4009A4369 /* SelectReportSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6CCD1E7F6FD4009A4369 /* SelectReportSenderCell.m */; };
 		41DC6CD01E7F6FD4009A4369 /* SelectReportSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41DC6CCE1E7F6FD4009A4369 /* SelectReportSenderCell.xib */; };
@@ -215,8 +215,6 @@
 		308C48C2EF02293DD8509C18 /* Pods-her..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-her..debug.xcconfig"; path = "Pods/Target Support Files/Pods-her./Pods-her..debug.xcconfig"; sourceTree = "<group>"; };
 		4109FDE91E80C17E00EA8A0F /* DuelAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DuelAlertView.h; path = her./herClasses/Chat/Views/DuelAlertView.h; sourceTree = SOURCE_ROOT; };
 		4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuelAlertView.m; path = her./herClasses/Chat/Views/DuelAlertView.m; sourceTree = SOURCE_ROOT; };
-		411497841E45BC7B000F4DA4 /* OldPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldPlayerViewController.h; sourceTree = "<group>"; };
-		411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldPlayerViewController.m; sourceTree = "<group>"; };
 		4114978A1E45BCCD000F4DA4 /* HerUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerUserInfo.h; sourceTree = "<group>"; };
 		4114978B1E45BCCD000F4DA4 /* HerUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerUserInfo.m; sourceTree = "<group>"; };
 		4114978D1E45C002000F4DA4 /* FriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
@@ -511,6 +509,8 @@
 		41A975F81E822D3B000BE965 /* DuelAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuelAudioManager.m; path = her./herClasses/Chat/Views/DuelAudioManager.m; sourceTree = SOURCE_ROOT; };
 		41A975FA1E823156000BE965 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCell.h; path = her./herClasses/Chat/Views/TableViewCell.h; sourceTree = SOURCE_ROOT; };
 		41A975FB1E823156000BE965 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = her./herClasses/Chat/Views/TableViewCell.m; sourceTree = SOURCE_ROOT; };
+		41A9783B1E829DD8000BE965 /* UnableUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnableUserView.h; sourceTree = "<group>"; };
+		41A9783C1E829DD8000BE965 /* UnableUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnableUserView.m; sourceTree = "<group>"; };
 		41D5C6A91E7A463B00CE1B12 /* SendingAnimtionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingAnimtionView.h; sourceTree = "<group>"; };
 		41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingAnimtionView.m; sourceTree = "<group>"; };
 		41DC6CCC1E7F6FD4009A4369 /* SelectReportSenderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReportSenderCell.h; sourceTree = "<group>"; };
@@ -673,8 +673,6 @@
 			children = (
 				047647911E2F679800642581 /* MainViewController.h */,
 				047647921E2F679800642581 /* MainViewController.m */,
-				411497841E45BC7B000F4DA4 /* OldPlayerViewController.h */,
-				411497851E45BC7B000F4DA4 /* OldPlayerViewController.m */,
 			);
 			path = Vcs;
 			sourceTree = "<group>";
@@ -694,6 +692,8 @@
 				418DCB3B1E4854B800035FC6 /* 系统提示tableview */,
 				411586821E48937B004AAC81 /* FindAnimationView.h */,
 				411586831E48937B004AAC81 /* FindAnimationView.m */,
+				41A9783B1E829DD8000BE965 /* UnableUserView.h */,
+				41A9783C1E829DD8000BE965 /* UnableUserView.m */,
 				411586851E489585004AAC81 /* FindingView.h */,
 				411586861E489585004AAC81 /* FindingView.m */,
 			);
@@ -1726,6 +1726,7 @@
 				41A7003A1E79078800A2D76C /* EaseImageView.m in Sources */,
 				41A7FFF01E79078800A2D76C /* MWPhoto.m in Sources */,
 				41A700361E79078800A2D76C /* EaseBubbleView+Voice.m in Sources */,
+				41A9783D1E829DD8000BE965 /* UnableUserView.m in Sources */,
 				41A7002D1E79078800A2D76C /* EaseCustomMessageCell.m in Sources */,
 				41A7000D1E79078800A2D76C /* PSTCollectionViewLayout.m in Sources */,
 				41A7001F1E79078800A2D76C /* EaseMessageReadManager.m in Sources */,
@@ -1746,7 +1747,6 @@
 				41A7001D1E79078800A2D76C /* EaseChineseToPinyin.m in Sources */,
 				41A700081E79078800A2D76C /* PSTCollectionViewCell.m in Sources */,
 				41A7FFDA1E79078800A2D76C /* MJRefreshAutoFooter.m in Sources */,
-				411497861E45BC7B000F4DA4 /* OldPlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

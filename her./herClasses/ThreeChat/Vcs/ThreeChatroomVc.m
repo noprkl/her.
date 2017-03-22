@@ -15,6 +15,7 @@
 #import "SelectReportMessageVc.h"
 #import "DuelAlertView.h"
 #import "DuelAnimationView.h"
+#import "FightFailedViewController.h"
 
 @interface ThreeChatroomVc ()<EaseMessageViewControllerDelegate, EMContactManagerDelegate, EaseMessageViewControllerDataSource, EaseChatBarMoreViewDelegate, EaseMessageCellDelegate>
 
@@ -90,7 +91,6 @@
 
     self.tableView.backgroundColor = BackGround_Color;
     [self.tableView reloadData];
-    
     
     [[EaseBaseMessageCell appearance] setSendBubbleBackgroundImage:[[UIImage imageNamed:@"sender"] stretchableImageWithLeftCapWidth:10 topCapHeight:20]];//设置发送气泡
     [[EaseBaseMessageCell appearance] setRecvBubbleBackgroundImage:[[UIImage imageNamed:@"accept"] stretchableImageWithLeftCapWidth:10 topCapHeight:20]];//设置接收气泡
@@ -194,7 +194,16 @@
         XWeakSelf;
         _duelAnimationView.victoryBlock = ^(){
             // 胜利了 踢人
-            [weakSelf requestKick];
+//            [weakSelf requestKick];
+            // 失败了 走人
+            FightFailedViewController *faildVc = [[FightFailedViewController alloc] init];
+            [weakSelf.navigationController pushViewController:faildVc animated:YES];
+
+        };
+        _duelAnimationView.faildBlock = ^(){
+            // 失败了 走人
+            FightFailedViewController *faildVc = [[FightFailedViewController alloc] init];
+            [weakSelf.navigationController pushViewController:faildVc animated:YES];
         };
     }
     return _duelAnimationView;
@@ -228,14 +237,6 @@
     
     self.duelAnimationView.hidden = NO;
     [self.duelAnimationView startAnimation];
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 

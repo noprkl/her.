@@ -16,7 +16,7 @@
 #import "SystemMessageTableView.h"
 #import "SystemMessageTableViewCell.h"
 #import "FindingView.h" // 寻找是的变换文字
-
+#import "UnableUserView.h" // 不能用哟
 // 跳转
 #import "TwoChatroomVc.h"
 #import "ThreeChatroomVc.h"
@@ -64,6 +64,10 @@
 @property (nonatomic, assign) CGFloat longitude;  // 经度
 
 @property (nonatomic, assign) CGFloat latitude; // 纬度
+
+
+@property (nonatomic, strong) UnableUserView *unableView; /**< 不能用提示 */
+
 @end
 
 static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
@@ -72,7 +76,12 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
+
+    
+    // 判断能不能用这个应用
+//    [self initUI];
+    [self unableUI];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -101,6 +110,30 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
     self.heartBtn.hidden = NO;
     self.systemMessagetableView.hidden = NO;
     self.findingView.hidden = YES;
+}
+- (void)unableUI {
+    [self.view addSubview:self.unableView];
+    [self.view addSubview:self.backGroundImgView];
+    [self.view addSubview:self.herBtn];
+
+    // 名字
+    CGSize viewSize = CGSizeMake(235, 100);
+    CGFloat topHeight = 70;
+    [self.unableView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.view.top).offset(topHeight);
+        make.size.equalTo(viewSize);
+    }];
+    [self.backGroundImgView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.centerX);
+        make.top.equalTo(self.unableView.bottom).offset(25);
+        make.bottom.equalTo(self.view.bottom).offset(-30);
+        make.left.equalTo(self.view.left).offset(50);
+    }];
+    [self.herBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.left).offset(10);
+        make.bottom.equalTo(self.view.bottom).offset(-10);
+    }];
 }
 - (void)initUI {
     [self.view addSubview:self.herBtn];
@@ -242,6 +275,12 @@ static NSString *systemMessageTableViewCellid = @"SystemMessageTableViewCell";
         };
     }
     return _findAgainView;
+}
+- (UnableUserView *)unableView {
+    if (!_unableView) {
+        _unableView = [[UnableUserView alloc] init];
+    }
+    return _unableView;
 }
 - (UIButton *)heartBtn {
     if (!_heartBtn) {

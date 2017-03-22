@@ -9,11 +9,12 @@
 #import "BaseView.h"
 
 typedef void(^VictoryBlock)();
+typedef void(^FaildDuelBlock)();
 
 @interface DuelAnimationView : BaseView
 
 @property (nonatomic, strong) VictoryBlock victoryBlock; /**< 胜利 */
-
+@property (nonatomic, strong) FaildDuelBlock faildBlock; /**< 失败 */
 - (void)startAnimation;
 - (void)stopAnimation;
 @end

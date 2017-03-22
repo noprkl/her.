@@ -1,14 +1,14 @@
 //
-//  FindingView.m
+//  UnableUserView.m
 //  her.
 //
-//  Created by 李祥起 on 2017/2/6.
+//  Created by 李祥起 on 2017/3/22.
 //  Copyright © 2017年 LXq. All rights reserved.
 //
 
-#import "FindingView.h"
+#import "UnableUserView.h"
 
-@interface FindingView ()
+@interface UnableUserView ()
 
 @property (nonatomic, strong) UIImageView *backImgView; /**< 名字背景 */
 
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UILabel *englishLabel; /**< 标题 */
 
 @end
-@implementation FindingView
+@implementation UnableUserView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -57,7 +57,7 @@
         make.left.equalTo(self.line1.left).offset(10);
         make.right.equalTo(self.right).offset(-5);
     }];
-   
+    
     [self.englishLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.line2.centerY);
         make.left.equalTo(self.line2.right).offset(10);
@@ -65,14 +65,7 @@
     }];
     
 }
-- (void)setChineseMessage:(NSString *)chineseMessage {
-    _chineseMessage = chineseMessage;
-    self.chineseLabel.text = chineseMessage;
-}
-- (void)setEnglishMessage:(NSString *)englishMessage {
-    _englishMessage = englishMessage;
-    self.englishLabel.text = englishMessage;
-}
+
 #pragma mark
 #pragma mark - 懒加载
 - (UIImageView *)backImgView {
@@ -86,7 +79,7 @@
         _chineseLabel = [[UILabel alloc] init];
         _chineseLabel.textColor = [UIColor colorWithHexString:@"#333333"];
         _chineseLabel.font = [UIFont systemFontOfSize:19];
-        _chineseLabel.text = @"正在为你寻找附近的他";
+        _chineseLabel.text = @"想得美，她是有节操的";
         _chineseLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _chineseLabel;
@@ -95,7 +88,7 @@
 - (UILabel *)englishLabel {
     if (!_englishLabel) {
         _englishLabel = [[UILabel alloc] init];
-        _englishLabel.text = @"Seeking him for you ...";
+        _englishLabel.text = @"No way to fuck her";
         _englishLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
         _englishLabel.font = [UIFont systemFontOfSize:14];
         _englishLabel.textAlignment = NSTextAlignmentCenter;
@@ -117,5 +110,5 @@
     return _line2;
 }
 
-@end
 
+@end

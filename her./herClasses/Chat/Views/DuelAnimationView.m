@@ -209,6 +209,20 @@ static NSInteger iCount = 5;
         _victoryBlock();
     }
 }
+- (void)faild {
+    NSLog(@"胜利了");
+    [self timerStop];
+    self.backImgView.hidden = NO;
+    self.bulletImgView.hidden = YES;
+    self.gankImgView.hidden = YES;
+    self.iconView.hidden = NO;
+    self.timeLabel.hidden = YES;
+    self.passImgView.hidden = NO;
+    self.victoryImgView.hidden = YES;
+    if (_faildBlock) {
+        _faildBlock();
+    }
+}
 - (void)timerBegin {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeOutLast) userInfo:nil repeats:YES];
 }
