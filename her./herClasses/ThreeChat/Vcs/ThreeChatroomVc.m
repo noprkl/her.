@@ -14,6 +14,7 @@
 #import "ChatPeopleView.h"
 #import "SelectReportMessageVc.h"
 #import "DuelAlertView.h"
+#import "DuelAnimationView.h"
 
 @interface ThreeChatroomVc ()<EaseMessageViewControllerDelegate, EMContactManagerDelegate, EaseMessageViewControllerDataSource, EaseChatBarMoreViewDelegate, EaseMessageCellDelegate>
 
@@ -28,6 +29,10 @@
 
 @property (nonatomic, strong) UIButton *duelBtn; /**< 决斗按钮 */
 @property (nonatomic, assign) NSInteger currentIndex; /**< 当前位置 */
+@property (nonatomic, strong) UIButton *kickBtn; /**< 踢人按钮 */
+
+@property (nonatomic, strong) DuelAnimationView *duelAnimationView; /**< 决斗动画 */
+
 @end
 
 @implementation ThreeChatroomVc
@@ -85,8 +90,7 @@
 
     self.tableView.backgroundColor = BackGround_Color;
     [self.tableView reloadData];
-    // 消息点击回调
-//    [EaseBaseMessageCell appearance].delegate = self;
+    
     
     [[EaseBaseMessageCell appearance] setSendBubbleBackgroundImage:[[UIImage imageNamed:@"sender"] stretchableImageWithLeftCapWidth:10 topCapHeight:20]];//设置发送气泡
     [[EaseBaseMessageCell appearance] setRecvBubbleBackgroundImage:[[UIImage imageNamed:@"accept"] stretchableImageWithLeftCapWidth:10 topCapHeight:20]];//设置接收气泡
@@ -136,6 +140,13 @@
         make.size.equalTo(KSIZE(80, 40));
     }];
     
+    [self.view addSubview:self.duelAnimationView];
+    [self.duelAnimationView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.top);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(150);
+    }];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -162,7 +173,6 @@
 
 #pragma mark
 #pragma mark - 决斗
-
 - (UIButton *)duelBtn {
     if (!_duelBtn) {
         _duelBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -177,7 +187,18 @@
     }
     return _duelBtn;
 }
-#pragma mark - TwoChatToolView Action
+- (DuelAnimationView *)duelAnimationView {
+    if (!_duelAnimationView) {
+        _duelAnimationView = [[DuelAnimationView alloc] init];
+        _duelAnimationView.hidden = YES;
+        XWeakSelf;
+        _duelAnimationView.victoryBlock = ^(){
+            // 胜利了 踢人
+            [weakSelf requestKick];
+        };
+    }
+    return _duelAnimationView;
+}
 #pragma mark
 #pragma mark - 决斗发起
 - (void)clickDuelBtnAction:(UIButton *)sender {
@@ -192,6 +213,7 @@
 #pragma mark
 #pragma mark - 收到决斗
 - (void)acceptDuelRequest {
+    [self hidHitnView];
     NSString *title = [NSString stringWithFormat:@"Jack向你发出决斗战书"];
     [self showDuleHint:title isShowBtn:YES];
 }
@@ -199,12 +221,13 @@
 #pragma mark
 #pragma mark - 开始决斗
 - (void)beginDuel {
+    [self hidHitnView];
     self.tableView.backgroundColor = HEXColor(@"#000000");
     EaseChatToolbar *chatToolBar = (EaseChatToolbar *)self.chatToolbar;
     chatToolBar.backgroundImage = [UIImage originalImageNamed:@"决斗背景"];
     
-    
-    
+    self.duelAnimationView.hidden = NO;
+    [self.duelAnimationView startAnimation];
     
     
     
@@ -218,15 +241,35 @@
 
 
 #pragma mark
+#pragma mark - 踢人
+- (UIButton *)kickBtn {
+    if (!_kickBtn) {
+        _kickBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [_kickBtn setTitle:@"踢掉他" forState:(UIControlStateNormal)];
+        [_kickBtn setBackgroundImage:[UIImage originalImageNamed:@"bubble"] forState:(UIControlStateNormal)];
+        [_kickBtn setBackgroundColor:[UIColor clearColor]];
+        [_kickBtn setTintColor:[UIColor colorWithHexString:@"#ffffff"]];
+        _kickBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_kickBtn setTitleEdgeInsets:UIEdgeInsetsMake(5, 0, 0, 0)];
+        _kickBtn.hidden = YES;
+        [_kickBtn addTarget:self action:@selector(requestKick) forControlEvents:(UIControlEventTouchDown)];
+    }
+    return _kickBtn;
+}
+#pragma mark
 #pragma mark - 决斗输了 踢人
 - (void)requestKick{
     [self setFocusBtn];
+    [self hidHitnView];
+    [self.kickBtn setHidden:YES];
+    [self.duelAnimationView stopAnimation];
+    self.duelAnimationView.hidden = YES;
     self.tableView.backgroundColor = BackGround_Color;
     EaseChatToolbar *chatToolBar = (EaseChatToolbar *)self.chatToolbar;
     chatToolBar.backgroundImage = [UIImage originalImageNamed:@"语音背景"];
 }
 
-/** 剩下的重新设置头部 */
+/* 剩下的重新设置头部 */
 - (void)setFocusBtn {
     [self.chatView createChatPeopleWithArray:@[@"jack"]];
 
@@ -236,6 +279,9 @@
     [custonBtn setImage:[UIImage originalImageNamed:@"like-red"] forState:(UIControlStateSelected)];
     [custonBtn addTarget:self action:@selector(clickFocusBtnAction:) forControlEvents:(UIControlEventTouchDown)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:custonBtn];
+    
+    // 消息点击回调
+    [EaseBaseMessageCell appearance].delegate = self;
 }
 
 - (void)popToVc {
@@ -371,41 +417,64 @@
     self.chatView = chatView;
     
     [self.view addSubview:self.duelBtn];
-//    [self.duelBtn makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view.top).offset(-1);
-//        make.right.equalTo(self.view.right).offset(-30);
-//        make.size.equalTo(KSIZE(80, 40));
-//    }];
+    [self.view addSubview:self.kickBtn];
+
     _currentIndex = 0;
-    chatView.firstBlock = ^(){
-        NSLog(@"第一个");
-        [self.duelBtn remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.view.top).offset(-1);
-            make.left.equalTo(self.view.left).offset(30);
-            make.size.equalTo(KSIZE(80, 40));
-        }];
-        if (_currentIndex == 1) {
-            self.duelBtn.hidden = !self.duelBtn.hidden;
-        }else{
+    if (_currentIndex == 0) {
+        chatView.firstBlock = ^(){
             
-        }
-        _currentIndex = 1;
-    };
-    chatView.secondBlock = ^(){
-        if (_currentIndex == 2) {
+            NSLog(@"第一个");
+            [self.duelBtn remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.top).offset(-1);
+                make.left.equalTo(self.view.left).offset(80);
+                make.size.equalTo(KSIZE(80, 40));
+            }];
+            if (_currentIndex == 1) {
+                self.duelBtn.hidden = !self.duelBtn.hidden;
+            }
+            _currentIndex = 1;
+        };
+        chatView.secondBlock = ^(){
             [self.duelBtn remakeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(self.view.top).offset(-1);
                 make.right.equalTo(self.view.right).offset(-30);
                 make.size.equalTo(KSIZE(80, 40));
             }];
-            NSLog(@"第二个");
-            self.duelBtn.hidden = !self.duelBtn.hidden;
-        }else{
-            
-        }
-        _currentIndex = 2;
+            if (_currentIndex == 2) {
+                NSLog(@"第二个");
+                self.duelBtn.hidden = !self.duelBtn.hidden;
+            }
+            _currentIndex = 2;
+        };
 
-    };
+    }else{
+        chatView.firstBlock = ^(){
+            
+            NSLog(@"第一个");
+            [self.kickBtn remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.top).offset(-1);
+                make.left.equalTo(self.view.left).offset(80);
+                make.size.equalTo(KSIZE(80, 40));
+            }];
+            if (_currentIndex == 1) {
+                self.kickBtn.hidden = !self.kickBtn.hidden;
+            }
+            _currentIndex = 1;
+        };
+        chatView.secondBlock = ^(){
+            [self.kickBtn remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.top).offset(-1);
+                make.right.equalTo(self.view.right).offset(-30);
+                make.size.equalTo(KSIZE(80, 40));
+            }];
+            if (_currentIndex == 2) {
+                NSLog(@"第二个");
+                self.kickBtn.hidden = !self.kickBtn.hidden;
+            }
+            _currentIndex = 2;
+        };
+    }
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage originalImageNamed:@"return"] style:(UIBarButtonItemStyleDone) target:self action:@selector(clickBackBtnAction)];
     
 }

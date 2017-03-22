@@ -164,6 +164,9 @@
 		41A7FFFD1E79078800A2D76C /* MKAnnotationView+EMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF291E79078800A2D76C /* MKAnnotationView+EMWebCache.m */; };
 		41A7FFFE1E79078800A2D76C /* NSData+EMImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF2B1E79078800A2D76C /* NSData+EMImageContentType.m */; };
 		41A7FFFF1E79078800A2D76C /* UIButton+EMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A7FF2D1E79078800A2D76C /* UIButton+EMWebCache.m */; };
+		41A975F61E822B94000BE965 /* DuelAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975F51E822B94000BE965 /* DuelAnimationView.m */; };
+		41A975F91E822D3B000BE965 /* DuelAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975F81E822D3B000BE965 /* DuelAudioManager.m */; };
+		41A975FC1E823156000BE965 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A975FB1E823156000BE965 /* TableViewCell.m */; };
 		41D5C6AB1E7A463B00CE1B12 /* SendingAnimtionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */; };
 		41DC6CCF1E7F6FD4009A4369 /* SelectReportSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6CCD1E7F6FD4009A4369 /* SelectReportSenderCell.m */; };
 		41DC6CD01E7F6FD4009A4369 /* SelectReportSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41DC6CCE1E7F6FD4009A4369 /* SelectReportSenderCell.xib */; };
@@ -502,6 +505,12 @@
 		41A7FFC51E79078800A2D76C /* EaseConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseConversationCell.h; sourceTree = "<group>"; };
 		41A7FFC61E79078800A2D76C /* EaseConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseConversationCell.m; sourceTree = "<group>"; };
 		41A7FFC81E79078800A2D76C /* EaseUIResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseUIResource.bundle; sourceTree = "<group>"; };
+		41A975F41E822B94000BE965 /* DuelAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DuelAnimationView.h; path = her./herClasses/Chat/Views/DuelAnimationView.h; sourceTree = SOURCE_ROOT; };
+		41A975F51E822B94000BE965 /* DuelAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuelAnimationView.m; path = her./herClasses/Chat/Views/DuelAnimationView.m; sourceTree = SOURCE_ROOT; };
+		41A975F71E822D3B000BE965 /* DuelAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DuelAudioManager.h; path = her./herClasses/Chat/Views/DuelAudioManager.h; sourceTree = SOURCE_ROOT; };
+		41A975F81E822D3B000BE965 /* DuelAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuelAudioManager.m; path = her./herClasses/Chat/Views/DuelAudioManager.m; sourceTree = SOURCE_ROOT; };
+		41A975FA1E823156000BE965 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCell.h; path = her./herClasses/Chat/Views/TableViewCell.h; sourceTree = SOURCE_ROOT; };
+		41A975FB1E823156000BE965 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = her./herClasses/Chat/Views/TableViewCell.m; sourceTree = SOURCE_ROOT; };
 		41D5C6A91E7A463B00CE1B12 /* SendingAnimtionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingAnimtionView.h; sourceTree = "<group>"; };
 		41D5C6AA1E7A463B00CE1B12 /* SendingAnimtionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingAnimtionView.m; sourceTree = "<group>"; };
 		41DC6CCC1E7F6FD4009A4369 /* SelectReportSenderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectReportSenderCell.h; sourceTree = "<group>"; };
@@ -740,6 +749,12 @@
 			children = (
 				4109FDE91E80C17E00EA8A0F /* DuelAlertView.h */,
 				4109FDEA1E80C17E00EA8A0F /* DuelAlertView.m */,
+				41A975F41E822B94000BE965 /* DuelAnimationView.h */,
+				41A975F51E822B94000BE965 /* DuelAnimationView.m */,
+				41A975F71E822D3B000BE965 /* DuelAudioManager.h */,
+				41A975F81E822D3B000BE965 /* DuelAudioManager.m */,
+				41A975FA1E823156000BE965 /* TableViewCell.h */,
+				41A975FB1E823156000BE965 /* TableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1599,11 +1614,13 @@
 				41A7FFD91E79078800A2D76C /* MBProgressHUD.m in Sources */,
 				41854A721E4822AA00B91BD0 /* FightFailedViewController.m in Sources */,
 				0476479F1E2F6A4E00642581 /* HerNameView.m in Sources */,
+				41A975F91E822D3B000BE965 /* DuelAudioManager.m in Sources */,
 				41A7FFFD1E79078800A2D76C /* MKAnnotationView+EMWebCache.m in Sources */,
 				41A7003E1E79078800A2D76C /* EaseChatBarMoreView.m in Sources */,
 				41A700211E79078800A2D76C /* EaseEmojiEmoticons.m in Sources */,
 				41A700221E79078800A2D76C /* EaseEmotionEscape.m in Sources */,
 				41A700281E79078800A2D76C /* EaseRefreshTableViewController.m in Sources */,
+				41A975FC1E823156000BE965 /* TableViewCell.m in Sources */,
 				0476479C1E2F6A0C00642581 /* ThreeChatroomVc.m in Sources */,
 				41A7002B1E79078800A2D76C /* EaseUserCell.m in Sources */,
 				41A7000C1E79078800A2D76C /* PSTCollectionViewItemKey.m in Sources */,
@@ -1661,6 +1678,7 @@
 				41A700001E79078800A2D76C /* UIImage+EMGIF.m in Sources */,
 				413716DA1E5AFC350001F251 /* SliderCutSongView.m in Sources */,
 				41ED79DF1E30E05100488730 /* FriendsView.m in Sources */,
+				41A975F61E822B94000BE965 /* DuelAnimationView.m in Sources */,
 				41A7001B1E79078800A2D76C /* UIViewController+DismissKeyboard.m in Sources */,
 				41A700391E79078800A2D76C /* EaseChatToolbarItem.m in Sources */,
 				41D5C6AB1E7A463B00CE1B12 /* SendingAnimtionView.m in Sources */,
